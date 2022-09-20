@@ -4,6 +4,7 @@
 #include <linux/init.h>
 #include <linux/sched.h> // include sched.h to implement process control block
 #include <linux/proc_fs.h>
+#include <linux/cred.h> 
 #include <linux/seq_file.h>
 #include <linux/ktime.h>
 
@@ -13,13 +14,19 @@
 #endif
 
 static int lab1_show(struct seq_file *m, void *v) {
-  
+  //sched_
   /* some code here */
+  // get PID from sched.h data structure
+  int PID = current->pid;
+
+
+  seq_printf(m,"Current Process PCB Information\n");
+  seq_printf(m,"PID = %d\n", PID);
   return 0;
 }
 
 static int lab1_open(struct inode *inode, struct  file *file) {
-  return single_open(file,lab1_show, NULL);
+  return single_open(file,lab1_show, NULL); // point to lab1_show when lab1 file is opened
 }
 
 #ifdef HAVE_PROC_OPS
