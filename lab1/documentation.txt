@@ -2,8 +2,33 @@ PROBLEM STATEMENT
 In this lab we had to build a kernel module that creates a 
 file in the /proc directory on linux, accesses data in
 the linux process control block and formats process info
-in the file that was created.
+in the file that was created. The process info that was 
+fetched and printed was the name of the process, PID, PPID, 
+State, Real UID, Effective UID, Saved UID, Real GID, 
+Effective GID, and Saved GID.
 
 HOW LAB LINKS TOGETHER
+The lab1_init function is called through module_init when the module is initiated. 
+The lab1_init function creates a file called lab1 and points to lab1_fops which has 
+the data structures for the process info that will be pulled. The function also logs
+that the lab1mod has been initialized. When the lab1 file is opened, it runs the 
+function lab1_open which calls the function single_open which then calls the 
+lab1_show function. The lab1_show function gets process info such as name of the 
+process, the process state, PID, PPID, Real UID, Effective UID, Saved UID, 
+Real GID, Effective GID, and Saved GID. The function then prints all this info 
+to the lab1 file.
+
 
 READ FUNCTION
+The read function is ran when the file is opened and essentially gets process info 
+from the process control block. current is a pointer to the current process and with 
+that we can look at its values from the sched.h and cred.h data structures. In this 
+lab, we have retrieved name of the current process, the process state, PID, PPID, 
+Real UID, Effective UID, Saved UID, Real GID, Effective GID, and Saved GID. 
+PID is process ID to uniquely identify processes. The PPID is the PID of the 
+process's parent. Real UID is the user ID of the user that started the process. 
+Effective UID is usually the Real UID but can be modified to allow non-privileged 
+users to do certain things. The Saved UID is used when a privileged process is 
+running and it needs to do unprivileged tasks, it will store the Effective UID 
+in the SUID. GID is used by the kernel to know what privileges to give a group of 
+users and the process they create.
