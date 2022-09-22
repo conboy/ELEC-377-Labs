@@ -29,7 +29,10 @@ static int lab1_show(struct seq_file *m, void *v) {
   // get process info from the cred.h data structure
   int RealUID = current -> cred -> uid.val;
   int EffectiveUID = current -> cred -> euid.val;
-
+  int SavedUID = current -> cred -> suid.val;
+  int RealGID = current -> cred -> gid.val;
+  int EffectiveGID = current -> cred -> egid.val;
+  int SavedGID = current -> cred -> sgid.val;
   //Print Statements
   seq_printf(m,"Current Process PCB Information\n");
   seq_printf(m,"PID = %d\n", PID);
@@ -37,6 +40,10 @@ static int lab1_show(struct seq_file *m, void *v) {
   seq_printf(m,"State ="+state+"\n");
   seq_printf(m, "Real UID = %d\n", RealUID);
   seq_printf(m, "Effective UID = %d\n", EffectiveUID);
+  seq_printf(m, "Saved UID = %d\n", SavedUID);
+  seq_printf(m, "Real GID = %d\n", RealGID);
+  seq_printf(m, "Effective GID = %d\n", EffectiveGID);
+  seq_printf(m, "Saved GID = %d\n", SavedGID);
   return 0;
 
 }
