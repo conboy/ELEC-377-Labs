@@ -20,7 +20,9 @@ static int lab1_show(struct seq_file *m, void *v) {
   struct task_struct * cur_task = current;
 
   // get state from cur_task data structure
-  int state = current -> state;  
+  int state = current -> state; 
+
+
   
   // get PID and PPID from sched.h data structure
   int PID = current->pid;
@@ -35,9 +37,18 @@ static int lab1_show(struct seq_file *m, void *v) {
   int SavedGID = current -> cred -> sgid.val;
   //Print Statements
   seq_printf(m,"Current Process PCB Information\n");
+  seq_printf(m,"Name = %s\n",current -> comm);
   seq_printf(m,"PID = %d\n", PID);
   seq_printf(m,"PPID = %d\n",PPID);
-  seq_printf(m,"State ="+state+"\n");
+  if (state==TASK_RUNNING){
+    seq_printf(m,"State = Running\n");
+  }
+  else if(state==TASK_STOPPED){
+    seq_printf(m,"State = Stopped\n");
+  }
+  else{
+    seq_printf(m,"State = Waiting\n")
+  }
   seq_printf(m, "Real UID = %d\n", RealUID);
   seq_printf(m, "Effective UID = %d\n", EffectiveUID);
   seq_printf(m, "Saved UID = %d\n", SavedUID);
