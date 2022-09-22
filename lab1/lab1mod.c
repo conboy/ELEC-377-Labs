@@ -14,13 +14,21 @@
 #endif
 
 static int lab1_show(struct seq_file *m, void *v) {
-  //sched_
-  /* some code here */
-  // get PID from sched.h data structure
+  struct task_struct * cur_task = current;
+
+  // get state from cur_task data structure
+  int state = current -> state;  
+  
+  // get PID and PPID from sched.h data structure
   int PID = current->pid;
+  int PPID = task_ppid_nr(cur_task);
+
+
 
 
   seq_printf(m,"Current Process PCB Information\n");
+  seq_printf(m,"PID = %d\n", PID);
+  seq_printf(m,"PID = %d\n", PID);
   seq_printf(m,"PID = %d\n", PID);
   return 0;
 }
