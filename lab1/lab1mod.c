@@ -24,10 +24,12 @@ static int lab1_show(struct seq_file *m, void *v) {
   
   // get PID and PPID from sched.h data structure
   int PID = current->pid;
+  int PPID = task_ppid_nr(cur_task);
 
   // get Real UID from cred.h data structure
   int RealUID = current -> cred -> uid;
 
+  //Print Statements
   seq_printf(m,"Current Process PCB Information\n");
   seq_printf(m,"PID = %d\n", PID);
 
