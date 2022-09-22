@@ -1,4 +1,8 @@
 Problem Statement
+In this lab we had to build a kernel module that creates a 
+file in the /proc directory on linux, accesses data in
+the linux process control block and formats process info
+in the file that was created.
 
 How Lab Links Together
 
