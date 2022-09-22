@@ -26,8 +26,9 @@ static int lab1_show(struct seq_file *m, void *v) {
   int PID = current->pid;
   int PPID = task_ppid_nr(cur_task);
 
-  // get Real UID from cred.h data structure
+  // get process info from the cred.h data structure
   int RealUID = current -> cred -> uid.val;
+  int EffectiveUID = current -> cred -> euid.val;
 
   //Print Statements
   seq_printf(m,"Current Process PCB Information\n");
@@ -35,6 +36,7 @@ static int lab1_show(struct seq_file *m, void *v) {
   seq_printf(m,"PPID = %d\n",PPID);
   seq_printf(m,"State ="+state+"\n");
   seq_printf(m, "Real UID = %d\n", RealUID);
+  seq_printf(m, "Effective UID = %d\n", EffectiveUID);
   return 0;
 
 }
