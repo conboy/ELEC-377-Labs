@@ -27,7 +27,7 @@ static int lab1_show(struct seq_file *m, void *v) {
   int PPID = task_ppid_nr(cur_task);
 
   // get Real UID from cred.h data structure
-  int RealUID = current -> cred -> uid;
+  int RealUID = current -> cred -> uid.val;
 
   //Print Statements
   seq_printf(m,"Current Process PCB Information\n");
