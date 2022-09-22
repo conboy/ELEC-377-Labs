@@ -14,15 +14,11 @@
 #endif
 
 static int lab1_show(struct seq_file *m, void *v) {
-  //sched_
-  /* some code here */
-  // get PID from sched.h data structure
+
   struct task_struct * cur_task = current;
 
   // get state from cur_task data structure
   int state = current -> state; 
-
-
   
   // get PID and PPID from sched.h data structure
   int PID = current->pid;
@@ -35,7 +31,7 @@ static int lab1_show(struct seq_file *m, void *v) {
   int RealGID = current -> cred -> gid.val;
   int EffectiveGID = current -> cred -> egid.val;
   int SavedGID = current -> cred -> sgid.val;
-  //Print Statements
+  //Print process info to lab1 file
   seq_printf(m,"Current Process PCB Information\n");
   seq_printf(m,"Name = %s\n",current -> comm);
   seq_printf(m,"PID = %d\n", PID);
@@ -80,16 +76,12 @@ static const struct file_operations lab1_fops = {
   .open = lab1_open,
   .read = seq_read,
   .llseek = seq_lseek,
-  .release = single_release,        //done
-
-  
-  /* some code here */
+  .release = single_release,
 };
 #endif
 
 static int __init lab1_init(void) {
   proc_create("lab1",0,NULL,&lab1_fops); // Creates a file in /proc directory on Linux
-  /* create proc entry -- done */
   printk(KERN_INFO "lab1mod in\n"); // Logs "lab1mode in\n", meaning intializing, into KERN_INFO
   return 0;
 }
@@ -100,5 +92,5 @@ static void __exit lab1_exit(void) {
 }
 
 MODULE_LICENSE("GPL");
-module_init(lab1_init);       // This was changed 
-module_exit(lab1_exit);
+module_init(lab1_init);       // initiate module
+module_exit(lab1_exit);       // exit module
