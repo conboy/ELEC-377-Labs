@@ -32,7 +32,8 @@ static int lab1_show(struct seq_file *m, void *v) {
   //Print Statements
   seq_printf(m,"Current Process PCB Information\n");
   seq_printf(m,"PID = %d\n", PID);
-
+  seq_printf(m,"PPID = %d\n",PPID);
+  seq_printf(m,"State ="+state+"\n");
   seq_printf(m, "Real UID = %d\n", RealUID);
   return 0;
 
