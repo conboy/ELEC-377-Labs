@@ -1,3 +1,12 @@
+DIFFERENCES IN THE OUTPUTS
+When running as a user, the User IDs and Group IDs are the 
+same. When running the same commands as root, the IDs 
+are 0. This is because the root user / group ID is 0
+and the normal user ID is 1000 and when the process is ran,
+it takes the ID from the user that started the process(0 for
+root and 1000 for normal user). This is to ensure the right 
+privileges are given to the process.
+
 TESTING
 #Running "cat /proc/lab1" on user
 19cjf6@elec377-Tues-31:~/elec377-Tues-31/lab1$ cat /proc/lab1
@@ -60,3 +69,4 @@ Saved GID = 0
 0+1 records in
 0+1 records out
 173 bytes copied, 0.00191081 s, 90.5 kB/s
+
