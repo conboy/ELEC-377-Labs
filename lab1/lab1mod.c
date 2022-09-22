@@ -47,7 +47,7 @@ static int lab1_show(struct seq_file *m, void *v) {
     seq_printf(m,"State = Stopped\n");
   }
   else{
-    seq_printf(m,"State = Waiting\n")
+    seq_printf(m,"State = Waiting\n");
   }
   seq_printf(m, "Real UID = %d\n", RealUID);
   seq_printf(m, "Effective UID = %d\n", EffectiveUID);
