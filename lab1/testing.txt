@@ -1,13 +1,3 @@
-PROBLEM STATEMENT
-In this lab we had to build a kernel module that creates a 
-file in the /proc directory on linux, accesses data in
-the linux process control block and formats process info
-in the file that was created.
-
-HOW LAB LINKS TOGETHER
-
-READ FUNCTION
-
 TESTING
 #Running "cat /proc/lab1" on user
 19cjf6@elec377-Tues-31:~/elec377-Tues-31/lab1$ cat /proc/lab1
