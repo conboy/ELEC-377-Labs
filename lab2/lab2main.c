@@ -88,6 +88,8 @@ int main(int argc, char * argv[]){
 
     // ---------------------------------------------------
     // START MONITOR TREADS
+    
+ 
     // start a thread for each monitor.
     // the monitor_threads array is used to pass
     // parameters
@@ -157,11 +159,22 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
 			     (cur_read_stat->discards_per_second));
 
     //------------------------------------
+    
     //  enter critical section for monitor
     //------------------------------------
-
-    
-
+    if(sem_wait(mutex)==-1) {
+        perror('Mutex in monitor enter');         // this will print out an error from errorNo and then my string
+        exit(1);
+    }
+    sem_wait(access_stats);
+    shmemptr-> machine_stats[machine_id].machine_state = cur_read_stat->machine_state;
+    shmemptr-> machine_stats[machine_id].num_of_processes= cur_read_stat->num_of_processes;
+    shmemptr-> machine_stats[machine_id].load_factor = cur_read_stat->load_factor;
+    shmemptr-> machine_stats[machine_id].packets_per_second = cur_read_stat->packets_per_second;
+    shmemptr-> machine_stats[machine_id].discards_per_second = cur_read_stat->discards_per_second;
+    sem_post(mutex);
+    sem_post(access_stats);
+    }
     //------------------------------------
     // monitor critical section
     //------------------------------------
