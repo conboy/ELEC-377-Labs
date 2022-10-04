@@ -159,28 +159,28 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
 			     (cur_read_stat->discards_per_second));
 
     //------------------------------------
-    
     //  enter critical section for monitor
     //------------------------------------
+    sem_wait(mutex);
     if(sem_wait(mutex)==-1) {
         perror('Mutex in monitor enter');         // this will print out an error from errorNo and then my string
         exit(1);
     }
+    shmemptr-> monitorCount++;
+    if(shmemptr -> monitorCount ==1) sem_wait(access_stats);
+    sem_post(mutex);
     sem_wait(access_stats);
+ 
+    // store the monitor data
     shmemptr-> machine_stats[machine_id].machine_state = cur_read_stat->machine_state;
     shmemptr-> machine_stats[machine_id].num_of_processes= cur_read_stat->num_of_processes;
     shmemptr-> machine_stats[machine_id].load_factor = cur_read_stat->load_factor;
     shmemptr-> machine_stats[machine_id].packets_per_second = cur_read_stat->packets_per_second;
     shmemptr-> machine_stats[machine_id].discards_per_second = cur_read_stat->discards_per_second;
-    sem_post(mutex);
-    sem_post(access_stats);
-    }
-    //------------------------------------
-    // monitor critical section
-    //------------------------------------
-
     
-    // store the monitor data
+    colourMsg(machId[machine_id], CONSOLE_GREEN,"Machine State: %d",(shmemptr->machine_stats[machine_id].machine_state));
+    
+ 
     
 
     
@@ -191,7 +191,8 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     // exit critical setion for monitor
     //------------------------------------
-
+    sem_post(mutex);
+    sem_post(access_stats);
 
 }
 
@@ -209,6 +210,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
         update the total entries read
         if total_entries_read no longer less than max entries, should set no more information flag in summary information
 */
+
 
 void * reader_thread(void * parms){
     struct shared_segment * shmemptr = ((struct reader_thread_param*)parms)->shmemptr;
