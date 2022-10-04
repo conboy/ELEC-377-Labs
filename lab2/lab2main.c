@@ -5,7 +5,7 @@
 //          to be completed as part of ELEC 277 Lab 2.
 //
 // Copyright 2022 Iffy Maduabuchi, Thomas Dean
-//-
+//
 
 #include "common.h"
 
@@ -21,7 +21,7 @@ char * progname;
 
 const char * ACCESS_STATS_NAME = "/access_stats";
 const char * ACCESS_SUMMARY_NAME = "/access_summary";
-const char * MUTEX_NAME = "/mutex";
+const char * MUTEX_NAME = "/mutex"; 
 
 sem_t * access_stats;
 sem_t * access_summary;
@@ -36,6 +36,12 @@ void * printer_thread(void * parms);
 struct shared_segment shared_memory;
 
 int main(int argc, char * argv[]){
+    //Opening Semaphores
+    mutex = sem_open("/mutex",O_RDWR|O_CREAT,0660,1);
+    access_summary = sem_open("/access_summary",O_RDWR|O_CREAT,0660,1);
+    access_stats = sem_open("/access_stats",O_RDWR|O_CREAT,0660,1);
+
+    
 
     // save executable name in global for error messages;
     progname = argv[0];
@@ -102,6 +108,9 @@ int main(int argc, char * argv[]){
     }
     
     // TODO: stage 2
+    pthread_t reader_id;
+    //reader_thread(reader_id);
+
     // start reader thread
     
     // TODO: stage 3
@@ -130,7 +139,6 @@ int main(int argc, char * argv[]){
 //-
 
 void init_shared( struct shared_segment * shmemptr ){
-
 
 	shmemptr -> monitorCount = 0;
 }
@@ -163,7 +171,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     if(sem_wait(mutex)==-1) {
-        perror('Mutex in monitor enter');         // this will print out an error from errorNo and then my string
+     //   perror('Mutex in monitor enter');         // this will print out an error from errorNo and then my string
         exit(1);
     }
     shmemptr-> monitorCount++;
@@ -177,7 +185,8 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     shmemptr-> machine_stats[machine_id].load_factor = cur_read_stat->load_factor;
     shmemptr-> machine_stats[machine_id].packets_per_second = cur_read_stat->packets_per_second;
     shmemptr-> machine_stats[machine_id].discards_per_second = cur_read_stat->discards_per_second;
-    
+    shmemptr-> machine_stats[machine_id].timestamp = cur_read_stat->timestamp;
+
     colourMsg(machId[machine_id], CONSOLE_GREEN,"Machine State: %d",(shmemptr->machine_stats[machine_id].machine_state));
     
  
