@@ -36,10 +36,7 @@ void * printer_thread(void * parms);
 struct shared_segment shared_memory;
 
 int main(int argc, char * argv[]){
-    //Opening Semaphores
-    mutex = sem_open("/mutex",O_RDWR|O_CREAT,0660,1);
-    access_summary = sem_open("/access_summary",O_RDWR|O_CREAT,0660,1);
-    access_stats = sem_open("/access_stats",O_RDWR|O_CREAT,0660,1);
+    
 
     
 
@@ -139,7 +136,10 @@ int main(int argc, char * argv[]){
 //-
 
 void init_shared( struct shared_segment * shmemptr ){
-
+    //Opening Semaphores
+    mutex = sem_open("/mutex",O_RDWR|O_CREAT,0660,1);
+    access_summary = sem_open("/access_summary",O_RDWR|O_CREAT,0660,1);
+    access_stats = sem_open("/access_stats",O_RDWR|O_CREAT,0660,1);
 	shmemptr -> monitorCount = 0;
 }
 
