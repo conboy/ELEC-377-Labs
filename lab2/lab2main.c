@@ -136,11 +136,15 @@ int main(int argc, char * argv[]){
 //-
 
 void init_shared( struct shared_segment * shmemptr ){
-    //Opening Semaphores
+    // Initialize Semaphores
     mutex = sem_open("/mutex",O_RDWR|O_CREAT,0660,1);
     access_summary = sem_open("/access_summary",O_RDWR|O_CREAT,0660,1);
     access_stats = sem_open("/access_stats",O_RDWR|O_CREAT,0660,1);
+    
+    // Initialize the members of the shared memory segment
 	shmemptr -> monitorCount = 0;
+    shmemptr -> checksum_seed = gen_checksum_seed(); // TODO: CHECK IF init_checksum() SHOULD BE USED INSTEAD
+    shmemptr -> summary;
 }
 
 //+
