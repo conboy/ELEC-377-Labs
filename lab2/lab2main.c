@@ -164,13 +164,6 @@ void init_shared( struct shared_segment * shmemptr ){
 
 void monitor_update_status_entry(int machine_id, int status_id, struct status * cur_read_stat, struct shared_segment * shmemptr ){
 
-    colourMsg(machId[machine_id] ,CONSOLE_GREEN,"Machine %d Line %d: %d,%d,%f,%d,%d",machine_id,status_id,
-			     (cur_read_stat->machine_state),
-			     (cur_read_stat->num_of_processes),
-			     (cur_read_stat->load_factor),
-			     (cur_read_stat->packets_per_second),
-			     (cur_read_stat->discards_per_second));
-
     //------------------------------------
     //  enter critical section for monitor
     //------------------------------------
@@ -193,12 +186,12 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
 
     // mark as unread
     shmemptr -> machine_stats[machine_id].read = 0;
-
+    
     // report if overwritten or normal case (Stage 2)
     
     
-    // if the read functopm has read the data before updating the data report it
-    if (shmemptr -> machine_stats[machine_id].read = 1) {
+    // if the read function has read the data before updating the data report it
+    if (shmemptr -> machine_stats[machine_id].read == 1) {
         colourMsg(machId[machine_id], CONSOLE_RED, "Machine %d Line %d: %d,%d,%f,%d,%d [DATA OVERWRITTEN]",machine_id,status_id,
 			     (cur_read_stat->machine_state),
 			     (cur_read_stat->num_of_processes),
