@@ -134,9 +134,9 @@ int main(int argc, char * argv[]){
 
 void init_shared( struct shared_segment * shmemptr ){
     // Initialize Semaphores
-    mutex = sem_open("/mutex",O_RDWR|O_CREAT,0660,1);
-    access_summary = sem_open("/access_summary",O_RDWR|O_CREAT,0660,1);
-    access_stats = sem_open("/access_stats",O_RDWR|O_CREAT,0660,1);
+    mutex = sem_open(MUTEX_NAME,O_RDWR|O_CREAT,0660,1);
+    access_summary = sem_open(ACCESS_SUMMARY_NAME,O_RDWR|O_CREAT,0660,1);
+    access_stats = sem_open(ACCESS_STATS_NAME,O_RDWR|O_CREAT,0660,1);
 
     // Check if semaphore initialization failed
     if (access_stats == SEM_FAILED || access_summary == SEM_FAILED || mutex == SEM_FAILED) {
@@ -169,7 +169,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     shmemptr -> monitorCount++;
-    if (shmemptr -> monitorCount == 1) sem_wait(access_stats);
+    if (shmemptr -> monitorCount == 1) sem_wait(access_summary);
     sem_post(mutex);
     //------------------------------------
     // monitor critical section
@@ -216,7 +216,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     shmemptr -> monitorCount--;
-    if (shmemptr -> monitorCount == 0) sem_post(access_stats);
+    if (shmemptr -> monitorCount == 0) sem_post(access_summary);
     sem_post(mutex);
 }
 
@@ -259,32 +259,28 @@ void * reader_thread(void * parms){
 
         threadLog('R',"Readeer Thread loop accessing_stats lock aquired", num_machines);
 
-        for (int machine_id = 0; machine_id < num_machines; machine_id++){
-            // check for updates toeach machine
-            if (shmemptr-> machine_stats[machine_id].read == 0) {
-                // set read flag to true
-                shmemptr-> machine_stats[machine_id].read == 1;
-                // collect stats for all machines
-                read_machines_state[machine_id] = shmemptr-> machine_stats[machine_id].machine_state;
-                read_update_times[machine_id] = shmemptr-> machine_stats[machine_id].timestamp;
+        for(int i = 0; i < num_machines; i++){
+            if(shmemptr -> machine_stats[i].read == 0){
+                read_machines_state[i] = shmemptr -> machine_stats[i].machine_state;
+                read_update_times[i] = shmemptr -> machine_stats[i].timestamp;
+                shmemptr -> machine_stats[i].read == 1;
 
-                // Print a warning if the machine is down
-                if (shmemptr->machine_stats[machine_id].machine_state == 0) {
-                    colourMsg(machine_id ,CONSOLE_RED,"Warning machine_id:%d is down", machine_id);
+                if (shmemptr->machine_stats[i].machine_state == 0) {
+                    colourMsg(i ,CONSOLE_RED,"Warning machine_id:%d is down", i);
                 }
-
                 // Accumulate data of the machine
-                total_procs += shmemptr-> machine_stats[machine_id].num_of_processes;
-                total_pps += shmemptr-> machine_stats[machine_id].packets_per_second;
-                total_dps += shmemptr-> machine_stats[machine_id].discards_per_second;
-                total_lf += shmemptr-> machine_stats[machine_id].load_factor;
+                total_procs += shmemptr-> machine_stats[i].num_of_processes;
+                total_pps += shmemptr-> machine_stats[i].packets_per_second;
+                total_dps += shmemptr-> machine_stats[i].discards_per_second;
+                total_lf += shmemptr-> machine_stats[i].load_factor;
             }
-        } 
+        }
         
         // release stats semaphore
         sem_post(access_stats);
-        threadLog('R',"Readeer Thread loop  accessing_stats lock released", num_machines);
 
+        threadLog('R',"Readeer Thread loop  accessing_stats lock released", num_machines);
+        
         //checksum - consume time outside of critical section.
         shmemptr -> checksum_seed = gen_checksum_seed();
         summary_checksum = gen_summary_checksum();
