@@ -105,7 +105,7 @@ int main(int argc, char * argv[]){
     pthread_t reader_id;
     
     // start reader thread
-    pthread_create(&reader_id, &thread_attr, reader_thread, (void *) &reader_param);
+    pthread_create(&reader_id, &thread_attr, reader_thread, (void *)&(reader_param));
 
     // TODO: stage 3
     // start printer thread
@@ -285,9 +285,8 @@ void * reader_thread(void * parms){
         sem_post(access_stats);
         threadLog('R',"Readeer Thread loop  accessing_stats lock released", num_machines);
 
-
         //checksum - consume time outside of critical section.
-        shmemptr->checksum_seed = gen_checksum_seed();
+        shmemptr -> checksum_seed = gen_checksum_seed();
         summary_checksum = gen_summary_checksum();
 
         
