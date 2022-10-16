@@ -193,12 +193,26 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
 
     
     // report if overwritten or normal case (Stage 2)
-    colourMsg(machId[machine_id] ,CONSOLE_GREEN,"DATA STORED: Machine %d Line %d: %d,%d,%f,%d,%d",machine_id,status_id,
+    
+    
+    // if the read functopm has read the data before updating the data report it
+    if (shmemptr -> machine_stats[machine_id].read = 1) {
+        colourMsg(machId[machine_id], CONSOLE_RED, "Machine %d Line %d: %d,%d,%f,%d,%d [DATA OVERWRITTEN]",machine_id,status_id,
 			     (cur_read_stat->machine_state),
 			     (cur_read_stat->num_of_processes),
 			     (cur_read_stat->load_factor),
 			     (cur_read_stat->packets_per_second),
 			     (cur_read_stat->discards_per_second));
+    }
+
+    else {
+        colourMsg(machId[machine_id] ,CONSOLE_GREEN,"Machine %d Line %d: %d,%d,%f,%d,%d [DATA STORED]",machine_id,status_id,
+			     (cur_read_stat->machine_state),
+			     (cur_read_stat->num_of_processes),
+			     (cur_read_stat->load_factor),
+			     (cur_read_stat->packets_per_second),
+			     (cur_read_stat->discards_per_second));
+    }
 
     // mark as unread
     shmemptr -> machine_stats[machine_id].read = 0;
@@ -235,8 +249,8 @@ void * reader_thread(void * parms){
     unsigned read_update_times[MAX_MACHINES];
     int read_machines_state[MAX_MACHINES];
     
-    int total_procs, total_pps, total_dps;
-    float total_lf;
+    int total_procs, total_pps, total_dps = 0;
+    float total_lf = 0;
     
     long summary_checksum;
     
@@ -246,35 +260,35 @@ void * reader_thread(void * parms){
     while(more_updates){
         threadLog('R',"Readeer Thread loop start", num_machines);
 
-
         // aquire stats semaphore
         sem_wait(access_stats);
-        for (int machine_id = 0; machine_id < num_machines; i++){
-            if (shmemptr-> machine_stats[machine_id].read == 0) {
-                shmemptr-> machine_stats[machine_id].read == 1;
-                read_machines_state[machine_id] = shmemptr-> machine_stats[machine_id].machine_state;
-                read_update_times[machine_id] = shmemptr-> machine_stats[machine_id].timestamp;
-            }
-        } 
-        sem_post(access_stats);
 
         threadLog('R',"Readeer Thread loop accessing_stats lock aquired", num_machines);
 
-        // check for updates toeach machine
-        if (shmemptr -> numMonitors == 0) more_updates = 0;
+        for (int machine_id = 0; machine_id < num_machines; i++){
+            // check for updates toeach machine
+            if (shmemptr-> machine_stats[machine_id].read == 0) {
+                // set read flag to true
+                shmemptr-> machine_stats[machine_id].read == 1;
+                // collect stats for all machines
+                read_machines_state[machine_id] = shmemptr-> machine_stats[machine_id].machine_state;
+                read_update_times[machine_id] = shmemptr-> machine_stats[machine_id].timestamp;
 
-        // collect stats for all machines
-        
-        
-        
-        
-        
-        
-        
-        
+                // Print a warning if the machine is down
+                if (shmemptr->machine_stats[i].machine_state == 0) {
+                    colourMsg(i ,CONSOLE_RED,"Warning machine_id:%d is down", i);
+                }
+
+                // Accumulate data of the machine
+                total_procs += shmemptr-> machine_stats[machine_id].num_of_processes;
+                total_pps += shmemptr-> machine_stats[machine_id].packets_per_second;
+                total_dps += shmemptr-> machine_stats[machine_id].discards_per_second;
+                total_lf += shmemptr-> machine_stats[machine_id].load_factor;
+            }
+        } 
         
         // release stats semaphore
- 
+        sem_post(access_stats);
         threadLog('R',"Readeer Thread loop  accessing_stats lock released", num_machines);
 
 
@@ -301,7 +315,9 @@ void * reader_thread(void * parms){
         // are the monitors still running? (Stage 2)
         //=======================
         
-        
+        // Check if there's more updates, stop if theres no more
+        if (shmemptr -> numMonitors == 0) more_updates = 0;
+
         threadLog('R',"Readeer Thread loop end", num_machines);
     }
     
