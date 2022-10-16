@@ -37,9 +37,6 @@ struct shared_segment shared_memory;
 
 int main(int argc, char * argv[]){
     
-
-    
-
     // save executable name in global for error messages;
     progname = argv[0];
 
@@ -143,8 +140,6 @@ void init_shared( struct shared_segment * shmemptr ){
     
     // Initialize the members of the shared memory segment
 	shmemptr -> monitorCount = 0;
-    shmemptr -> checksum_seed = gen_checksum_seed(); // TODO: CHECK IF init_checksum() SHOULD BE USED INSTEAD
-    shmemptr -> summary;
 }
 
 //+
@@ -182,16 +177,21 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     if(shmemptr -> monitorCount ==1) sem_wait(access_stats);
     sem_post(mutex);
     sem_wait(access_stats);
+
+    //------------------------------------
+    // monitor critical section
+    //------------------------------------
+
  
     // store the monitor data
-    shmemptr-> machine_stats[machine_id].machine_state = cur_read_stat->machine_state;
-    shmemptr-> machine_stats[machine_id].num_of_processes= cur_read_stat->num_of_processes;
-    shmemptr-> machine_stats[machine_id].load_factor = cur_read_stat->load_factor;
-    shmemptr-> machine_stats[machine_id].packets_per_second = cur_read_stat->packets_per_second;
-    shmemptr-> machine_stats[machine_id].discards_per_second = cur_read_stat->discards_per_second;
-    shmemptr-> machine_stats[machine_id].timestamp = cur_read_stat->timestamp;
+    // shmemptr-> machine_stats[machine_id].machine_state = cur_read_stat->machine_state;
+    // shmemptr-> machine_stats[machine_id].num_of_processes= cur_read_stat->num_of_processes;
+    // shmemptr-> machine_stats[machine_id].load_factor = cur_read_stat->load_factor;
+    // shmemptr-> machine_stats[machine_id].packets_per_second = cur_read_stat->packets_per_second;
+    // shmemptr-> machine_stats[machine_id].discards_per_second = cur_read_stat->discards_per_second;
+    // shmemptr-> machine_stats[machine_id].timestamp = cur_read_stat->timestamp;
 
-    colourMsg(machId[machine_id], CONSOLE_GREEN,"Machine State: %d",(shmemptr->machine_stats[machine_id].machine_state));
+    // colourMsg(machId[machine_id], CONSOLE_GREEN,"Machine State: %d",(shmemptr->machine_stats[machine_id].machine_state));
     
  
     

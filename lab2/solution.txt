@@ -1,1 +1,3 @@
-Opened three semaphores
+SOLUTION
+
+Opened three semaphores and initialized the shared memory segment.
