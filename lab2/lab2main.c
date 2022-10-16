@@ -103,10 +103,10 @@ int main(int argc, char * argv[]){
     
     // TODO: stage 2
     pthread_t reader_id;
-    //reader_thread(reader_id);
-
-    // start reader thread
     
+    // start reader thread
+    pthread_create(&reader_id, &thread_attr, reader_thread_func, (void *) &reader_param);
+
     // TODO: stage 3
     // start printer thread
     
@@ -176,7 +176,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     shmemptr -> monitorCount++;
-    if (shmemptr -> monitorCount == 1) sem_wait(access_summary);
+    if (shmemptr -> monitorCount == 1) sem_wait(access_stats);
     sem_post(mutex);
     //------------------------------------
     // monitor critical section
@@ -193,7 +193,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
 
     
     // report if overwritten or normal case (Stage 2)
-    colourMsg(machId[machine_id] ,CONSOLE_GREEN,"REPORTED: Machine %d Line %d: %d,%d,%f,%d,%d",machine_id,status_id,
+    colourMsg(machId[machine_id] ,CONSOLE_GREEN,"DATA STORED: Machine %d Line %d: %d,%d,%f,%d,%d",machine_id,status_id,
 			     (cur_read_stat->machine_state),
 			     (cur_read_stat->num_of_processes),
 			     (cur_read_stat->load_factor),
@@ -208,7 +208,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     shmemptr -> monitorCount--;
-    if (shmemptr -> monitorCount == 0) sem_post(access_summary);
+    if (shmemptr -> monitorCount == 0) sem_post(access_stats);
     sem_post(mutex);
 }
 
@@ -248,11 +248,21 @@ void * reader_thread(void * parms){
 
 
         // aquire stats semaphore
+        sem_wait(access_stats);
+        for (int machine_id = 0; machine_id < num_machines; i++){
+            if (shmemptr-> machine_stats[machine_id].read == 0) {
+                shmemptr-> machine_stats[machine_id].read == 1;
+                read_machines_state[machine_id] = shmemptr-> machine_stats[machine_id].machine_state;
+                read_update_times[machine_id] = shmemptr-> machine_stats[machine_id].timestamp;
+            }
+        } 
+        sem_post(access_stats);
 
-        
         threadLog('R',"Readeer Thread loop accessing_stats lock aquired", num_machines);
 
         // check for updates toeach machine
+        if (shmemptr -> numMonitors == 0) more_updates = 0;
+
         // collect stats for all machines
         
         
