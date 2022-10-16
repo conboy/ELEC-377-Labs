@@ -105,7 +105,7 @@ int main(int argc, char * argv[]){
     pthread_t reader_id;
     
     // start reader thread
-    pthread_create(&reader_id, &thread_attr, reader_thread_func, (void *) &reader_param);
+    pthread_create(&reader_id, &thread_attr, reader_thread, (void *) &reader_param);
 
     // TODO: stage 3
     // start printer thread
@@ -191,7 +191,9 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     shmemptr-> machine_stats[machine_id].discards_per_second = cur_read_stat->discards_per_second;
     shmemptr-> machine_stats[machine_id].timestamp = cur_read_stat->timestamp;
 
-    
+    // mark as unread
+    shmemptr -> machine_stats[machine_id].read = 0;
+
     // report if overwritten or normal case (Stage 2)
     
     
@@ -214,8 +216,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
 			     (cur_read_stat->discards_per_second));
     }
 
-    // mark as unread
-    shmemptr -> machine_stats[machine_id].read = 0;
+    
 
     //------------------------------------
     // exit critical setion for monitor
