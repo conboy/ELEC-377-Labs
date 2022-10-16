@@ -265,7 +265,7 @@ void * reader_thread(void * parms){
 
         threadLog('R',"Readeer Thread loop accessing_stats lock aquired", num_machines);
 
-        for (int machine_id = 0; machine_id < num_machines; i++){
+        for (int machine_id = 0; machine_id < num_machines; machine_id++){
             // check for updates toeach machine
             if (shmemptr-> machine_stats[machine_id].read == 0) {
                 // set read flag to true
@@ -275,8 +275,8 @@ void * reader_thread(void * parms){
                 read_update_times[machine_id] = shmemptr-> machine_stats[machine_id].timestamp;
 
                 // Print a warning if the machine is down
-                if (shmemptr->machine_stats[i].machine_state == 0) {
-                    colourMsg(i ,CONSOLE_RED,"Warning machine_id:%d is down", i);
+                if (shmemptr->machine_stats[machine_id].machine_state == 0) {
+                    colourMsg(machine_id ,CONSOLE_RED,"Warning machine_id:%d is down", machine_id);
                 }
 
                 // Accumulate data of the machine
