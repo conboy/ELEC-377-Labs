@@ -103,9 +103,11 @@ int main(int argc, char * argv[]){
     
     // TODO: stage 2
     pthread_t reader_id;
+    reader_param.num_machines = num_monitor_threads;
+    reader_param.shmemptr = &shared_memory;
     
     // start reader thread
-    pthread_create(&reader_id, &thread_attr, reader_thread, (void *)&(reader_param));
+    pthread_create(&(reader_id), &thread_attr, reader_thread, (void * )&(reader_param));
 
     // TODO: stage 3
     // start printer thread
@@ -169,7 +171,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     shmemptr -> monitorCount++;
-    if (shmemptr -> monitorCount == 1) sem_wait(access_summary);
+    if (shmemptr -> monitorCount == 1) sem_wait(access_stats);
     sem_post(mutex);
     //------------------------------------
     // monitor critical section
@@ -216,7 +218,7 @@ void monitor_update_status_entry(int machine_id, int status_id, struct status * 
     //------------------------------------
     sem_wait(mutex);
     shmemptr -> monitorCount--;
-    if (shmemptr -> monitorCount == 0) sem_post(access_summary);
+    if (shmemptr -> monitorCount == 0) sem_post(access_stats);
     sem_post(mutex);
 }
 
