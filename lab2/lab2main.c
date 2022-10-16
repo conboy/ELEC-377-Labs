@@ -250,16 +250,16 @@ void * reader_thread(void * parms){
     
     long summary_checksum;
     
-    threadLog('R',"Readeer Thread: %d machines", num_machines);
+    threadLog('R',"Reader Thread: %d machines", num_machines);
     msleep(1000);
     
     while(more_updates){
-        threadLog('R',"Readeer Thread loop start", num_machines);
+        threadLog('R',"Reader Thread loop start", num_machines);
 
         // aquire stats semaphore
         sem_wait(access_stats);
 
-        threadLog('R',"Readeer Thread loop accessing_stats lock aquired", num_machines);
+        threadLog('R',"Reader Thread loop accessing_stats lock aquired", num_machines);
 
         for(int i = 0; i < num_machines; i++){
             if(shmemptr -> machine_stats[i].read == 0){
@@ -268,20 +268,21 @@ void * reader_thread(void * parms){
                 shmemptr -> machine_stats[i].read == 1;
 
                 if (shmemptr->machine_stats[i].machine_state == 0) {
-                    colourMsg(i ,CONSOLE_RED,"Warning machine_id:%d is down", i);
+                    colourMsg(machId[i] ,CONSOLE_RED,"Warning machine_id:%d is down", i);
                 }
                 // Accumulate data of the machine
                 total_procs += shmemptr-> machine_stats[i].num_of_processes;
                 total_pps += shmemptr-> machine_stats[i].packets_per_second;
                 total_dps += shmemptr-> machine_stats[i].discards_per_second;
                 total_lf += shmemptr-> machine_stats[i].load_factor;
+                colourMsg(machId[i] ,CONSOLE_GREEN,"Machine %d Accumulated Data: NOP: %d PPS: %d DPS: %d LF: %f", i, total_procs, total_pps, total_dps, total_lf);
             }
         }
         
         // release stats semaphore
         sem_post(access_stats);
 
-        threadLog('R',"Readeer Thread loop  accessing_stats lock released", num_machines);
+        threadLog('R',"Reader Thread loop  accessing_stats lock released", num_machines);
         
         //checksum - consume time outside of critical section.
         shmemptr -> checksum_seed = gen_checksum_seed();
@@ -309,7 +310,7 @@ void * reader_thread(void * parms){
         // Check if there's more updates, stop if theres no more
         if (shmemptr -> numMonitors == 0) more_updates = 0;
 
-        threadLog('R',"Readeer Thread loop end", num_machines);
+        threadLog('R',"Reader Thread loop end", num_machines);
     }
     
     pthread_exit(0);
