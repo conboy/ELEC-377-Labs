@@ -358,26 +358,37 @@ void * printer_thread(void * parms){
         msleep(print_period);
         
         // aquire summary mutex
-        sem_wait(mutex);
+        sem_wait(access_summary);
 
         // get current time
+        cur_time = get_current_unix_time();
+
         
 
         // printe summary
         threadLog('P',"Printer Step");
 
-        printf("[%u] SUMMARY INFORMATION\n", get_current_unix_time());
+        printf("[%u] SUMMARY INFORMATION\n", cur_time);
         printf("MACHINE | UP | UPTIME                 | LAST UPDATE  \n");
         
         for (int i = 0; i < num_machines; i++){
-            printf("%d\t%u\t%u\t%u", i, shmemptr -> summary.machines_state[i], get_current_unix_time() - shmemptr -> summary.machines_online_since[i], shmemptr -> summary.machines_last_updated[i]);
-            printf("-----------------------------------------------------\n");
+            // calculate uptime if machine is up
+            if (shmemptr -> summary.machines_state[i] == 1){
+            cur_uptime = cur_time - shmemptr -> summary.machines_online_since[i];
+            }
+            else {
+                cur_uptime = 0;
+            }
+
+            // print summary information
+            printf("%d       | %u  |\t%u\t%u\n", i, shmemptr -> summary.machines_state[i], cur_uptime , shmemptr -> summary.machines_last_updated[i]);
+            
 
         }
-        
+        printf("\n-----------------------------------------------------\n");
         
         // release summary mutex
-        sem_post(mutex);
+        sem_post(access_summary);
 
         //Are the monitors still running.
         if (shmemptr -> numMonitors == 0) more_updates = 0;
