@@ -1,464 +1,358 @@
-[0;35mM [1665989633.182677] Monitor threads 3[0m
-[0;35mM [1665989633.182745] Printer delay (msec) 1800[0m
-[0;33mR [1665989633.183018] Reader Thread: 3 machines[0m
-[0;33mP [1665989633.183027] Printer Thread: delay 1800[0m
-[0;35m2 [1665989633.183032] thread 2, file name is machine_2.txt[0m
-[0;33m2 [1665989633.183049] Machine 2 started[0m
-[0;32m2 [1665989633.183064] Machine 2 Line 0: 0,0,0.000000,0,0[0m
-[0;32m2 [1665989633.183068] Machine 2 Line 0: 0,0,0.000000,0,0 [DATA STORED][0m
-[0;33m2 [1665989633.183069] Sleeping for 1240 msec[0m
-[0;35m1 [1665989633.183073] thread 1, file name is machine_1.txt[0m
-[0;33m1 [1665989633.183081] Machine 1 started[0m
-[0;32m1 [1665989633.183086] Machine 1 Line 0: 1,9,0.900000,11,19[0m
-[0;32m1 [1665989633.183087] Machine 1 Line 0: 1,9,0.900000,11,19 [DATA STORED][0m
-[0;33m1 [1665989633.183088] Sleeping for 1020 msec[0m
-[0;35m0 [1665989633.183092] thread 0, file name is machine_0.txt[0m
-[0;33m0 [1665989633.183098] Machine 0 started[0m
-[0;32m0 [1665989633.183103] Machine 0 Line 0: 1,4,0.500000,16,9[0m
-[0;32m0 [1665989633.183104] Machine 0 Line 0: 1,4,0.500000,16,9 [DATA STORED][0m
-[0;33m0 [1665989633.183104] Sleeping for 900 msec[0m
-[0;32m0 [1665989634.083182] Machine 0 Line 1: 1,3,0.200000,5,19[0m
-[0;32m0 [1665989634.083188] Machine 0 Line 1: 1,3,0.200000,5,19 [DATA STORED][0m
-[0;33m0 [1665989634.083189] Sleeping for 8000 msec[0m
-[0;33mR [1665989634.183228] Reader Thread loop start[0m
-[0;33mR [1665989634.183232] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989634.183233] Machine 0 Accumulated Data: NOP: 3 PPS: 5 DPS: 19 LF: 0.200000[0m
-[0;32m1 [1665989634.183237] Machine 1 Accumulated Data: NOP: 12 PPS: 16 DPS: 38 LF: 1.100000[0m
-[1;31m2 [1665989634.183238] Warning machine_id:2 is down[0m
-[0;32m2 [1665989634.183238] Machine 2 Accumulated Data: NOP: 12 PPS: 16 DPS: 38 LF: 1.100000[0m
-[0;33mR [1665989634.183239] Reader Thread loop  accessing_stats lock released[0m
-[0;32m1 [1665989634.203767] Machine 1 Line 1: 1,1,0.100000,42,14[0m
-[0;32m1 [1665989634.203772] Machine 1 Line 1: 1,1,0.100000,42,14 [DATA STORED][0m
-[0;33m1 [1665989634.203773] Sleeping for 8000 msec[0m
-[0;32m2 [1665989634.423570] Machine 2 Line 1: 1,10,0.200000,39,17[0m
-[0;32m2 [1665989634.423577] Machine 2 Line 1: 1,10,0.200000,39,17 [DATA STORED][0m
-[0;33m2 [1665989634.423578] Sleeping for 8000 msec[0m
-[0;33mR [1665989634.795319] Reader Thread loop end[0m
-[0;33mR [1665989634.795323] Reader Thread loop start[0m
-[0;33mR [1665989634.795323] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989634.795324] Machine 0 Accumulated Data: NOP: 15 PPS: 21 DPS: 57 LF: 1.300000[0m
-[0;32m1 [1665989634.795327] Machine 1 Accumulated Data: NOP: 16 PPS: 63 DPS: 71 LF: 1.400000[0m
-[0;32m2 [1665989634.795327] Machine 2 Accumulated Data: NOP: 26 PPS: 102 DPS: 88 LF: 1.600000[0m
-[0;33mR [1665989634.795328] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989634.983331] Printer Step[0m
-[1665989634] SUMMARY INFORMATION
+student@ELEC377Home:~/elec377-Tues-31/lab2$ ./lab2main 3 1800
+M [1665991381.040966] Monitor threads 3
+M [1665991381.041053] Printer delay (msec) 1800
+2 [1665991381.041237] thread 2, file name is machine_2.txt
+2 [1665991381.041258] Machine 2 started
+2 [1665991381.041279] Machine 2 Line 0: 0,0,0.000000,0,0
+2 [1665991381.041290] Machine 2 Line 0: 0,0,0.000000,0,0 [DATA STORED]
+2 [1665991381.041299] Sleeping for 1240 msec
+P [1665991381.041312] Printer Thread: delay 1800
+R [1665991381.041322] Reader Thread: 3 machines
+1 [1665991381.041332] thread 1, file name is machine_1.txt
+1 [1665991381.041351] Machine 1 started
+1 [1665991381.041364] Machine 1 Line 0: 1,9,0.900000,11,19
+1 [1665991381.041371] Machine 1 Line 0: 1,9,0.900000,11,19 [DATA STORED]
+1 [1665991381.041377] Sleeping for 1020 msec
+0 [1665991381.041384] thread 0, file name is machine_0.txt
+0 [1665991381.041396] Machine 0 started
+0 [1665991381.041439] Machine 0 Line 0: 1,4,0.500000,16,9
+0 [1665991381.041454] Machine 0 Line 0: 1,4,0.500000,16,9 [DATA STORED]
+0 [1665991381.041462] Sleeping for 900 msec
+0 [1665991381.941567] Machine 0 Line 1: 1,3,0.200000,5,19
+0 [1665991381.941585] Machine 0 Line 1: 1,3,0.200000,5,19 [DATA STORED]
+0 [1665991381.941587] Sleeping for 8000 msec
+R [1665991382.041396] Reader Thread loop start
+R [1665991382.041412] Reader Thread loop accessing_stats lock aquired
+0 [1665991382.041414] Machine 0 Accumulated Data: NOP: 3 PPS: 5 DPS: 19 LF: 0.200000
+1 [1665991382.041418] Machine 1 Accumulated Data: NOP: 12 PPS: 16 DPS: 38 LF: 1.100000
+2 [1665991382.041420] Warning machine_id:2 is down
+2 [1665991382.041421] Machine 2 Accumulated Data: NOP: 12 PPS: 16 DPS: 38 LF: 1.100000
+R [1665991382.041422] Reader Thread loop  accessing_stats lock released
+1 [1665991382.061765] Machine 1 Line 1: 1,1,0.100000,42,14
+1 [1665991382.061783] Machine 1 Line 1: 1,1,0.100000,42,14 [DATA STORED]
+1 [1665991382.061791] Sleeping for 8000 msec
+2 [1665991382.281619] Machine 2 Line 1: 1,10,0.200000,39,17
+2 [1665991382.281649] Machine 2 Line 1: 1,10,0.200000,39,17 [DATA STORED]
+2 [1665991382.281655] Sleeping for 8000 msec
+P [1665991382.841674] Printer Step
+[1665991382] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 0      | 1665989634
-1       | 1  | 1      | 1665989633
-2       | 0  | 0      | 1665989633
-[0;33mR [1665989635.328919] Reader Thread loop end[0m
-[0;33mR [1665989635.328923] Reader Thread loop start[0m
-[0;33mR [1665989635.328924] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989635.328924] Machine 0 Accumulated Data: NOP: 29 PPS: 107 DPS: 107 LF: 1.800000[0m
-[0;32m1 [1665989635.328927] Machine 1 Accumulated Data: NOP: 30 PPS: 149 DPS: 121 LF: 1.900000[0m
-[0;32m2 [1665989635.328928] Machine 2 Accumulated Data: NOP: 40 PPS: 188 DPS: 138 LF: 2.100000[0m
-[0;33mR [1665989635.328929] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989635.992301] Reader Thread loop end[0m
-[0;33mR [1665989635.992305] Reader Thread loop start[0m
-[0;33mR [1665989635.992305] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989635.992306] Machine 0 Accumulated Data: NOP: 43 PPS: 193 DPS: 157 LF: 2.300000[0m
-[0;32m1 [1665989636.000466] Machine 1 Accumulated Data: NOP: 44 PPS: 235 DPS: 171 LF: 2.400000[0m
-[0;32m2 [1665989636.000468] Machine 2 Accumulated Data: NOP: 54 PPS: 274 DPS: 188 LF: 2.600000[0m
-[0;33mR [1665989636.000469] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989636.783488] Printer Step[0m
-[1665989636] SUMMARY INFORMATION
+0       | 0  | 0      | 0
+1       | 0  | 0      | 0
+2       | 0  | 0      | 0
+R [1665991382.879050] Reader Thread loop end
+R [1665991382.882201] Reader Thread loop start
+R [1665991382.882209] Reader Thread loop accessing_stats lock aquired
+0 [1665991382.882214] Machine 0 Accumulated Data: NOP: 15 PPS: 21 DPS: 57 LF: 1.300000
+1 [1665991382.882222] Machine 1 Accumulated Data: NOP: 16 PPS: 63 DPS: 71 LF: 1.400000
+2 [1665991382.882228] Machine 2 Accumulated Data: NOP: 26 PPS: 102 DPS: 88 LF: 1.600000
+R [1665991382.882233] Reader Thread loop  accessing_stats lock released
+R [1665991383.687144] Reader Thread loop end
+R [1665991383.688141] Reader Thread loop start
+R [1665991383.688728] Reader Thread loop accessing_stats lock aquired
+0 [1665991383.691336] Machine 0 Accumulated Data: NOP: 29 PPS: 107 DPS: 107 LF: 1.800000
+1 [1665991383.691352] Machine 1 Accumulated Data: NOP: 30 PPS: 149 DPS: 121 LF: 1.900000
+2 [1665991383.691361] Machine 2 Accumulated Data: NOP: 40 PPS: 188 DPS: 138 LF: 2.100000
+R [1665991383.691368] Reader Thread loop  accessing_stats lock released
+R [1665991384.431814] Reader Thread loop end
+R [1665991384.432993] Reader Thread loop start
+R [1665991384.436711] Reader Thread loop accessing_stats lock aquired
+0 [1665991384.436723] Machine 0 Accumulated Data: NOP: 43 PPS: 193 DPS: 157 LF: 2.300000
+1 [1665991384.436731] Machine 1 Accumulated Data: NOP: 44 PPS: 235 DPS: 171 LF: 2.400000
+2 [1665991384.436736] Machine 2 Accumulated Data: NOP: 54 PPS: 274 DPS: 188 LF: 2.600000
+R [1665991384.436741] Reader Thread loop  accessing_stats lock released
+P [1665991384.646860] Printer Step
+[1665991384] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 2      | 1665989634
-1       | 1  | 2      | 1665989634
-2       | 1  | 2      | 1665989634
-[0;33mR [1665989636.812951] Reader Thread loop end[0m
-[0;33mR [1665989636.812955] Reader Thread loop start[0m
-[0;33mR [1665989636.812955] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989636.812956] Machine 0 Accumulated Data: NOP: 57 PPS: 279 DPS: 207 LF: 2.800000[0m
-[0;32m1 [1665989636.812959] Machine 1 Accumulated Data: NOP: 58 PPS: 321 DPS: 221 LF: 2.900000[0m
-[0;32m2 [1665989636.812960] Machine 2 Accumulated Data: NOP: 68 PPS: 360 DPS: 238 LF: 3.100000[0m
-[0;33mR [1665989636.812961] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989637.296524] Reader Thread loop end[0m
-[0;33mR [1665989637.296528] Reader Thread loop start[0m
-[0;33mR [1665989637.296529] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989637.296529] Machine 0 Accumulated Data: NOP: 71 PPS: 365 DPS: 257 LF: 3.300000[0m
-[0;32m1 [1665989637.296532] Machine 1 Accumulated Data: NOP: 72 PPS: 407 DPS: 271 LF: 3.400000[0m
-[0;32m2 [1665989637.296533] Machine 2 Accumulated Data: NOP: 82 PPS: 446 DPS: 288 LF: 3.600000[0m
-[0;33mR [1665989637.296534] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989637.773017] Reader Thread loop end[0m
-[0;33mR [1665989637.773021] Reader Thread loop start[0m
-[0;33mR [1665989637.773022] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989637.773022] Machine 0 Accumulated Data: NOP: 85 PPS: 451 DPS: 307 LF: 3.800000[0m
-[0;32m1 [1665989637.773025] Machine 1 Accumulated Data: NOP: 86 PPS: 493 DPS: 321 LF: 3.900000[0m
-[0;32m2 [1665989637.773026] Machine 2 Accumulated Data: NOP: 96 PPS: 532 DPS: 338 LF: 4.100000[0m
-[0;33mR [1665989637.773027] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989638.395823] Reader Thread loop end[0m
-[0;33mR [1665989638.395827] Reader Thread loop start[0m
-[0;33mR [1665989638.395828] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989638.395828] Machine 0 Accumulated Data: NOP: 99 PPS: 537 DPS: 357 LF: 4.300000[0m
-[0;32m1 [1665989638.395831] Machine 1 Accumulated Data: NOP: 100 PPS: 579 DPS: 371 LF: 4.400000[0m
-[0;32m2 [1665989638.395832] Machine 2 Accumulated Data: NOP: 110 PPS: 618 DPS: 388 LF: 4.599999[0m
-[0;33mR [1665989638.395832] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989638.584104] Printer Step[0m
-[1665989638] SUMMARY INFORMATION
+0       | 1  | 3      | 1665991381
+1       | 1  | 2      | 1665991382
+2       | 1  | 2      | 1665991382
+R [1665991385.282263] Reader Thread loop end
+R [1665991385.283519] Reader Thread loop start
+R [1665991385.283526] Reader Thread loop accessing_stats lock aquired
+0 [1665991385.283532] Machine 0 Accumulated Data: NOP: 57 PPS: 279 DPS: 207 LF: 2.800000
+1 [1665991385.283540] Machine 1 Accumulated Data: NOP: 58 PPS: 321 DPS: 221 LF: 2.900000
+2 [1665991385.283545] Machine 2 Accumulated Data: NOP: 68 PPS: 360 DPS: 238 LF: 3.100000
+R [1665991385.283550] Reader Thread loop  accessing_stats lock released
+R [1665991386.131002] Reader Thread loop end
+R [1665991386.134576] Reader Thread loop start
+R [1665991386.134588] Reader Thread loop accessing_stats lock aquired
+0 [1665991386.134593] Machine 0 Accumulated Data: NOP: 71 PPS: 365 DPS: 257 LF: 3.300000
+1 [1665991386.134601] Machine 1 Accumulated Data: NOP: 72 PPS: 407 DPS: 271 LF: 3.400000
+2 [1665991386.134607] Machine 2 Accumulated Data: NOP: 82 PPS: 446 DPS: 288 LF: 3.600000
+R [1665991386.134612] Reader Thread loop  accessing_stats lock released
+P [1665991386.449847] Printer Step
+[1665991386] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 4      | 1665989634
-1       | 1  | 4      | 1665989634
-2       | 1  | 4      | 1665989634
-[0;33mR [1665989638.878933] Reader Thread loop end[0m
-[0;33mR [1665989638.878937] Reader Thread loop start[0m
-[0;33mR [1665989638.878937] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989638.878938] Machine 0 Accumulated Data: NOP: 113 PPS: 623 DPS: 407 LF: 4.799999[0m
-[0;32m1 [1665989638.878941] Machine 1 Accumulated Data: NOP: 114 PPS: 665 DPS: 421 LF: 4.899999[0m
-[0;32m2 [1665989638.878942] Machine 2 Accumulated Data: NOP: 124 PPS: 704 DPS: 438 LF: 5.099999[0m
-[0;33mR [1665989638.878942] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989639.338029] Reader Thread loop end[0m
-[0;33mR [1665989639.338033] Reader Thread loop start[0m
-[0;33mR [1665989639.338034] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989639.338034] Machine 0 Accumulated Data: NOP: 127 PPS: 709 DPS: 457 LF: 5.299999[0m
-[0;32m1 [1665989639.338038] Machine 1 Accumulated Data: NOP: 128 PPS: 751 DPS: 471 LF: 5.399999[0m
-[0;32m2 [1665989639.339641] Machine 2 Accumulated Data: NOP: 138 PPS: 790 DPS: 488 LF: 5.599998[0m
-[0;33mR [1665989639.339643] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989640.071297] Reader Thread loop end[0m
-[0;33mR [1665989640.071301] Reader Thread loop start[0m
-[0;33mR [1665989640.071302] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989640.071302] Machine 0 Accumulated Data: NOP: 141 PPS: 795 DPS: 507 LF: 5.799998[0m
-[0;32m1 [1665989640.071305] Machine 1 Accumulated Data: NOP: 142 PPS: 837 DPS: 521 LF: 5.899998[0m
-[0;32m2 [1665989640.071306] Machine 2 Accumulated Data: NOP: 152 PPS: 876 DPS: 538 LF: 6.099998[0m
-[0;33mR [1665989640.071307] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989640.384371] Printer Step[0m
-[1665989640] SUMMARY INFORMATION
+0       | 1  | 5      | 1665991381
+1       | 1  | 4      | 1665991382
+2       | 1  | 4      | 1665991382
+R [1665991386.964077] Reader Thread loop end
+R [1665991386.967508] Reader Thread loop start
+R [1665991386.967521] Reader Thread loop accessing_stats lock aquired
+0 [1665991386.967527] Machine 0 Accumulated Data: NOP: 85 PPS: 451 DPS: 307 LF: 3.800000
+1 [1665991386.967535] Machine 1 Accumulated Data: NOP: 86 PPS: 493 DPS: 321 LF: 3.900000
+2 [1665991386.967540] Machine 2 Accumulated Data: NOP: 96 PPS: 532 DPS: 338 LF: 4.100000
+R [1665991386.967546] Reader Thread loop  accessing_stats lock released
+R [1665991387.737942] Reader Thread loop end
+R [1665991387.739338] Reader Thread loop start
+R [1665991387.742670] Reader Thread loop accessing_stats lock aquired
+0 [1665991387.742686] Machine 0 Accumulated Data: NOP: 99 PPS: 537 DPS: 357 LF: 4.300000
+1 [1665991387.742695] Machine 1 Accumulated Data: NOP: 100 PPS: 579 DPS: 371 LF: 4.400000
+2 [1665991387.742702] Machine 2 Accumulated Data: NOP: 110 PPS: 618 DPS: 388 LF: 4.599999
+R [1665991387.742708] Reader Thread loop  accessing_stats lock released
+P [1665991388.252708] Printer Step
+[1665991388] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 6      | 1665989634
-1       | 1  | 6      | 1665989634
-2       | 1  | 6      | 1665989634
-[0;33mR [1665989640.730382] Reader Thread loop end[0m
-[0;33mR [1665989640.730386] Reader Thread loop start[0m
-[0;33mR [1665989640.730387] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989640.730387] Machine 0 Accumulated Data: NOP: 155 PPS: 881 DPS: 557 LF: 6.299998[0m
-[0;32m1 [1665989640.730391] Machine 1 Accumulated Data: NOP: 156 PPS: 923 DPS: 571 LF: 6.399998[0m
-[0;32m2 [1665989640.730392] Machine 2 Accumulated Data: NOP: 166 PPS: 962 DPS: 588 LF: 6.599998[0m
-[0;33mR [1665989640.730393] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989641.385687] Reader Thread loop end[0m
-[0;33mR [1665989641.385691] Reader Thread loop start[0m
-[0;33mR [1665989641.385692] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989641.385692] Machine 0 Accumulated Data: NOP: 169 PPS: 967 DPS: 607 LF: 6.799997[0m
-[0;32m1 [1665989641.385695] Machine 1 Accumulated Data: NOP: 170 PPS: 1009 DPS: 621 LF: 6.899997[0m
-[0;32m2 [1665989641.385696] Machine 2 Accumulated Data: NOP: 180 PPS: 1048 DPS: 638 LF: 7.099997[0m
-[0;33mR [1665989641.385696] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989641.835578] Reader Thread loop end[0m
-[0;33mR [1665989641.835581] Reader Thread loop start[0m
-[0;33mR [1665989641.835581] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989641.835582] Machine 0 Accumulated Data: NOP: 183 PPS: 1053 DPS: 657 LF: 7.299997[0m
-[0;32m1 [1665989641.835585] Machine 1 Accumulated Data: NOP: 184 PPS: 1095 DPS: 671 LF: 7.399997[0m
-[0;32m2 [1665989641.835585] Machine 2 Accumulated Data: NOP: 194 PPS: 1134 DPS: 688 LF: 7.599997[0m
-[0;33mR [1665989641.835586] Reader Thread loop  accessing_stats lock released[0m
-[0;32m0 [1665989642.083586] Machine 0 Line 2: 0,0,0.000000,0,0[0m
-[0;32m0 [1665989642.083592] Machine 0 Line 2: 0,0,0.000000,0,0 [DATA STORED][0m
-[0;33m0 [1665989642.083593] Sleeping for 1460 msec[0m
-[0;33mP [1665989642.185203] Printer Step[0m
-[1665989642] SUMMARY INFORMATION
+0       | 1  | 7      | 1665991381
+1       | 1  | 6      | 1665991382
+2       | 1  | 6      | 1665991382
+R [1665991388.580367] Reader Thread loop end
+R [1665991388.580395] Reader Thread loop start
+R [1665991388.580400] Reader Thread loop accessing_stats lock aquired
+0 [1665991388.580405] Machine 0 Accumulated Data: NOP: 113 PPS: 623 DPS: 407 LF: 4.799999
+1 [1665991388.580413] Machine 1 Accumulated Data: NOP: 114 PPS: 665 DPS: 421 LF: 4.899999
+2 [1665991388.580418] Machine 2 Accumulated Data: NOP: 124 PPS: 704 DPS: 438 LF: 5.099999
+R [1665991388.580423] Reader Thread loop  accessing_stats lock released
+R [1665991389.363477] Reader Thread loop end
+R [1665991389.364535] Reader Thread loop start
+R [1665991389.365130] Reader Thread loop accessing_stats lock aquired
+0 [1665991389.368248] Machine 0 Accumulated Data: NOP: 127 PPS: 709 DPS: 457 LF: 5.299999
+1 [1665991389.368267] Machine 1 Accumulated Data: NOP: 128 PPS: 751 DPS: 471 LF: 5.399999
+2 [1665991389.368272] Machine 2 Accumulated Data: NOP: 138 PPS: 790 DPS: 488 LF: 5.599998
+R [1665991389.368278] Reader Thread loop  accessing_stats lock released
+0 [1665991389.944225] Machine 0 Line 2: 0,0,0.000000,0,0
+0 [1665991389.944249] Machine 0 Line 2: 0,0,0.000000,0,0 [DATA STORED]
+0 [1665991389.944255] Sleeping for 1460 msec
+P [1665991390.053646] Printer Step
+[1665991390] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 8      | 1665989634
-1       | 1  | 8      | 1665989634
-2       | 1  | 8      | 1665989634
-[0;32m1 [1665989642.204063] Machine 1 Line 2: 0,0,0.000000,0,0[0m
-[0;32m1 [1665989642.204067] Machine 1 Line 2: 0,0,0.000000,0,0 [DATA STORED][0m
-[0;33m1 [1665989642.204068] Sleeping for 980 msec[0m
-[0;33mR [1665989642.285000] Reader Thread loop end[0m
-[0;33mR [1665989642.285004] Reader Thread loop start[0m
-[0;33mR [1665989642.285005] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989642.285006] Warning machine_id:0 is down[0m
-[0;32m0 [1665989642.285006] Machine 0 Accumulated Data: NOP: 194 PPS: 1134 DPS: 688 LF: 7.599997[0m
-[1;31m1 [1665989642.285009] Warning machine_id:1 is down[0m
-[0;32m1 [1665989642.285009] Machine 1 Accumulated Data: NOP: 194 PPS: 1134 DPS: 688 LF: 7.599997[0m
-[0;32m2 [1665989642.285010] Machine 2 Accumulated Data: NOP: 204 PPS: 1173 DPS: 705 LF: 7.799996[0m
-[0;33mR [1665989642.286273] Reader Thread loop  accessing_stats lock released[0m
-[0;32m2 [1665989642.423763] Machine 2 Line 2: 0,0,0.000000,0,0[0m
-[0;32m2 [1665989642.423768] Machine 2 Line 2: 0,0,0.000000,0,0 [DATA STORED][0m
-[0;33m2 [1665989642.423769] Sleeping for 1280 msec[0m
-[0;33mR [1665989642.767850] Reader Thread loop end[0m
-[0;33mR [1665989642.767854] Reader Thread loop start[0m
-[0;33mR [1665989642.767855] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989642.767855] Warning machine_id:0 is down[0m
-[0;32m0 [1665989642.767855] Machine 0 Accumulated Data: NOP: 204 PPS: 1173 DPS: 705 LF: 7.799996[0m
-[1;31m1 [1665989642.767858] Warning machine_id:1 is down[0m
-[0;32m1 [1665989642.767859] Machine 1 Accumulated Data: NOP: 204 PPS: 1173 DPS: 705 LF: 7.799996[0m
-[1;31m2 [1665989642.767859] Warning machine_id:2 is down[0m
-[0;32m2 [1665989642.767860] Machine 2 Accumulated Data: NOP: 204 PPS: 1173 DPS: 705 LF: 7.799996[0m
-[0;33mR [1665989642.767860] Reader Thread loop  accessing_stats lock released[0m
-[0;32m1 [1665989643.184405] Machine 1 Line 3: 1,4,0.600000,48,10[0m
-[0;32m1 [1665989643.184411] Machine 1 Line 3: 1,4,0.600000,48,10 [DATA STORED][0m
-[0;33m1 [1665989643.184412] Sleeping for 1120 msec[0m
-[0;33mR [1665989643.269096] Reader Thread loop end[0m
-[0;33mR [1665989643.269100] Reader Thread loop start[0m
-[0;33mR [1665989643.269101] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989643.269101] Warning machine_id:0 is down[0m
-[0;32m0 [1665989643.269102] Machine 0 Accumulated Data: NOP: 204 PPS: 1173 DPS: 705 LF: 7.799996[0m
-[0;32m1 [1665989643.269105] Machine 1 Accumulated Data: NOP: 208 PPS: 1221 DPS: 715 LF: 8.399997[0m
-[1;31m2 [1665989643.269106] Warning machine_id:2 is down[0m
-[0;32m2 [1665989643.269107] Machine 2 Accumulated Data: NOP: 208 PPS: 1221 DPS: 715 LF: 8.399997[0m
-[0;33mR [1665989643.269107] Reader Thread loop  accessing_stats lock released[0m
-[0;32m0 [1665989643.544021] Machine 0 Line 3: 1,1,0.200000,35,17[0m
-[0;32m0 [1665989643.544027] Machine 0 Line 3: 1,1,0.200000,35,17 [DATA STORED][0m
-[0;33m0 [1665989643.544028] Sleeping for 940 msec[0m
-[0;32m2 [1665989643.704367] Machine 2 Line 3: 1,6,0.700000,28,0[0m
-[0;32m2 [1665989643.704374] Machine 2 Line 3: 1,6,0.700000,28,0 [DATA STORED][0m
-[0;33m2 [1665989643.704375] Sleeping for 1960 msec[0m
-[0;33mR [1665989643.728098] Reader Thread loop end[0m
-[0;33mR [1665989643.728100] Reader Thread loop start[0m
-[0;33mR [1665989643.728100] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989643.728100] Machine 0 Accumulated Data: NOP: 209 PPS: 1256 DPS: 732 LF: 8.599997[0m
-[0;32m1 [1665989643.728102] Machine 1 Accumulated Data: NOP: 213 PPS: 1304 DPS: 742 LF: 9.199997[0m
-[0;32m2 [1665989643.728103] Machine 2 Accumulated Data: NOP: 219 PPS: 1332 DPS: 742 LF: 9.899997[0m
-[0;33mR [1665989643.728103] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989643.987599] Printer Step[0m
-[1665989643] SUMMARY INFORMATION
+0       | 1  | 9      | 1665991381
+1       | 1  | 8      | 1665991382
+2       | 1  | 8      | 1665991382
+1 [1665991390.064903] Machine 1 Line 2: 0,0,0.000000,0,0
+1 [1665991390.064921] Machine 1 Line 2: 0,0,0.000000,0,0 [DATA STORED]
+1 [1665991390.064927] Sleeping for 980 msec
+R [1665991390.207241] Reader Thread loop end
+R [1665991390.207275] Reader Thread loop start
+R [1665991390.207280] Reader Thread loop accessing_stats lock aquired
+0 [1665991390.207285] Warning machine_id:0 is down
+0 [1665991390.207291] Machine 0 Accumulated Data: NOP: 138 PPS: 790 DPS: 488 LF: 5.599998
+1 [1665991390.207299] Warning machine_id:1 is down
+1 [1665991390.207304] Machine 1 Accumulated Data: NOP: 138 PPS: 790 DPS: 488 LF: 5.599998
+2 [1665991390.207309] Machine 2 Accumulated Data: NOP: 148 PPS: 829 DPS: 505 LF: 5.799998
+R [1665991390.207314] Reader Thread loop  accessing_stats lock released
+2 [1665991390.281889] Machine 2 Line 2: 0,0,0.000000,0,0
+2 [1665991390.281923] Machine 2 Line 2: 0,0,0.000000,0,0 [DATA STORED]
+2 [1665991390.281929] Sleeping for 1280 msec
+R [1665991390.986735] Reader Thread loop end
+R [1665991390.988013] Reader Thread loop start
+R [1665991390.992230] Reader Thread loop accessing_stats lock aquired
+0 [1665991390.992245] Warning machine_id:0 is down
+0 [1665991390.992251] Machine 0 Accumulated Data: NOP: 148 PPS: 829 DPS: 505 LF: 5.799998
+1 [1665991390.992259] Warning machine_id:1 is down
+1 [1665991390.992264] Machine 1 Accumulated Data: NOP: 148 PPS: 829 DPS: 505 LF: 5.799998
+2 [1665991390.992269] Warning machine_id:2 is down
+2 [1665991390.992274] Machine 2 Accumulated Data: NOP: 148 PPS: 829 DPS: 505 LF: 5.799998
+R [1665991390.992279] Reader Thread loop  accessing_stats lock released
+1 [1665991391.045990] Machine 1 Line 3: 1,4,0.600000,48,10
+1 [1665991391.048315] Machine 1 Line 3: 1,4,0.600000,48,10 [DATA STORED]
+1 [1665991391.048332] Sleeping for 1120 msec
+0 [1665991391.404632] Machine 0 Line 3: 1,1,0.200000,35,17
+0 [1665991391.404659] Machine 0 Line 3: 1,1,0.200000,35,17 [DATA STORED]
+0 [1665991391.404665] Sleeping for 940 msec
+2 [1665991391.562929] Machine 2 Line 3: 1,6,0.700000,28,0
+2 [1665991391.562960] Machine 2 Line 3: 1,6,0.700000,28,0 [DATA STORED]
+2 [1665991391.562967] Sleeping for 1960 msec
+R [1665991391.826503] Reader Thread loop end
+R [1665991391.828965] Reader Thread loop start
+R [1665991391.828978] Reader Thread loop accessing_stats lock aquired
+0 [1665991391.828984] Machine 0 Accumulated Data: NOP: 149 PPS: 864 DPS: 522 LF: 5.999998
+1 [1665991391.828992] Machine 1 Accumulated Data: NOP: 153 PPS: 912 DPS: 532 LF: 6.599998
+2 [1665991391.828997] Machine 2 Accumulated Data: NOP: 159 PPS: 940 DPS: 532 LF: 7.299998
+R [1665991391.829003] Reader Thread loop  accessing_stats lock released
+P [1665991391.864180] Printer Step
+[1665991391] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 0  | 0      | 1665989642
-1       | 1  | 0      | 1665989643
-2       | 0  | 0      | 1665989642
-[0;33mR [1665989644.227378] Reader Thread loop end[0m
-[0;33mR [1665989644.227382] Reader Thread loop start[0m
-[0;33mR [1665989644.227383] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989644.227383] Machine 0 Accumulated Data: NOP: 220 PPS: 1367 DPS: 759 LF: 10.099997[0m
-[0;32m1 [1665989644.227387] Machine 1 Accumulated Data: NOP: 224 PPS: 1415 DPS: 769 LF: 10.699997[0m
-[0;32m2 [1665989644.227388] Machine 2 Accumulated Data: NOP: 230 PPS: 1443 DPS: 769 LF: 11.399997[0m
-[0;33mR [1665989644.227389] Reader Thread loop  accessing_stats lock released[0m
-[0;32m1 [1665989644.305341] Machine 1 Line 4: 0,0,0.000000,0,0[0m
-[0;32m1 [1665989644.305347] Machine 1 Line 4: 0,0,0.000000,0,0 [DATA STORED][0m
-[0;33m1 [1665989644.305348] Sleeping for 8000 msec[0m
-[0;32m0 [1665989644.484166] Machine 0 Line 4: 1,3,0.600000,10,10[0m
-[0;32m0 [1665989644.484173] Machine 0 Line 4: 1,3,0.600000,10,10 [DATA STORED][0m
-[0;33m0 [1665989644.484174] Sleeping for 8000 msec[0m
-[0;33mR [1665989644.737013] Reader Thread loop end[0m
-[0;33mR [1665989644.737015] Reader Thread loop start[0m
-[0;33mR [1665989644.737016] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989644.737016] Machine 0 Accumulated Data: NOP: 233 PPS: 1453 DPS: 779 LF: 11.999997[0m
-[1;31m1 [1665989644.737020] Warning machine_id:1 is down[0m
-[0;32m1 [1665989644.737021] Machine 1 Accumulated Data: NOP: 233 PPS: 1453 DPS: 779 LF: 11.999997[0m
-[0;32m2 [1665989644.737021] Machine 2 Accumulated Data: NOP: 239 PPS: 1481 DPS: 779 LF: 12.699997[0m
-[0;33mR [1665989644.737022] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989645.357021] Reader Thread loop end[0m
-[0;33mR [1665989645.357024] Reader Thread loop start[0m
-[0;33mR [1665989645.357025] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989645.357026] Machine 0 Accumulated Data: NOP: 242 PPS: 1491 DPS: 789 LF: 13.299997[0m
-[1;31m1 [1665989645.357029] Warning machine_id:1 is down[0m
-[0;32m1 [1665989645.357030] Machine 1 Accumulated Data: NOP: 242 PPS: 1491 DPS: 789 LF: 13.299997[0m
-[0;32m2 [1665989645.357030] Machine 2 Accumulated Data: NOP: 248 PPS: 1519 DPS: 789 LF: 13.999997[0m
-[0;33mR [1665989645.357031] Reader Thread loop  accessing_stats lock released[0m
-[0;32m2 [1665989645.665367] Machine 2 Line 4: 1,1,0.200000,45,13[0m
-[0;32m2 [1665989645.665373] Machine 2 Line 4: 1,1,0.200000,45,13 [DATA STORED][0m
-[0;33m2 [1665989645.665374] Sleeping for 8000 msec[0m
-[0;33mP [1665989645.787982] Printer Step[0m
-[1665989645] SUMMARY INFORMATION
+0       | 0  | 0      | 1665991389
+1       | 0  | 0      | 1665991390
+2       | 0  | 0      | 1665991390
+1 [1665991392.172368] Machine 1 Line 4: 0,0,0.000000,0,0
+1 [1665991392.172396] Machine 1 Line 4: 0,0,0.000000,0,0 [DATA STORED]
+1 [1665991392.172402] Sleeping for 8000 msec
+0 [1665991392.348856] Machine 0 Line 4: 1,3,0.600000,10,10
+0 [1665991392.348890] Machine 0 Line 4: 1,3,0.600000,10,10 [DATA STORED]
+0 [1665991392.348896] Sleeping for 8000 msec
+R [1665991392.661377] Reader Thread loop end
+R [1665991392.664471] Reader Thread loop start
+R [1665991392.664487] Reader Thread loop accessing_stats lock aquired
+0 [1665991392.664494] Machine 0 Accumulated Data: NOP: 162 PPS: 950 DPS: 542 LF: 7.899998
+1 [1665991392.664503] Warning machine_id:1 is down
+1 [1665991392.664509] Machine 1 Accumulated Data: NOP: 162 PPS: 950 DPS: 542 LF: 7.899998
+2 [1665991392.664515] Machine 2 Accumulated Data: NOP: 168 PPS: 978 DPS: 542 LF: 8.599998
+R [1665991392.664523] Reader Thread loop  accessing_stats lock released
+R [1665991393.503821] Reader Thread loop end
+R [1665991393.507702] Reader Thread loop start
+R [1665991393.507717] Reader Thread loop accessing_stats lock aquired
+0 [1665991393.507722] Machine 0 Accumulated Data: NOP: 171 PPS: 988 DPS: 552 LF: 9.199998
+1 [1665991393.507730] Warning machine_id:1 is down
+1 [1665991393.507735] Machine 1 Accumulated Data: NOP: 171 PPS: 988 DPS: 552 LF: 9.199998
+2 [1665991393.507741] Machine 2 Accumulated Data: NOP: 177 PPS: 1016 DPS: 552 LF: 9.899998
+R [1665991393.507746] Reader Thread loop  accessing_stats lock released
+2 [1665991393.525275] Machine 2 Line 4: 1,1,0.200000,45,13
+2 [1665991393.525295] Machine 2 Line 4: 1,1,0.200000,45,13 [DATA STORED]
+2 [1665991393.525302] Sleeping for 8000 msec
+P [1665991393.665323] Printer Step
+[1665991393] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 1      | 1665989644
-1       | 0  | 0      | 1665989644
-2       | 1  | 2      | 1665989643
-[0;33mR [1665989645.897464] Reader Thread loop end[0m
-[0;33mR [1665989645.897468] Reader Thread loop start[0m
-[0;33mR [1665989645.897468] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989645.897468] Machine 0 Accumulated Data: NOP: 251 PPS: 1529 DPS: 799 LF: 14.599998[0m
-[1;31m1 [1665989645.897472] Warning machine_id:1 is down[0m
-[0;32m1 [1665989645.897473] Machine 1 Accumulated Data: NOP: 251 PPS: 1529 DPS: 799 LF: 14.599998[0m
-[0;32m2 [1665989645.897474] Machine 2 Accumulated Data: NOP: 252 PPS: 1574 DPS: 812 LF: 14.799997[0m
-[0;33mR [1665989645.897474] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989646.368573] Reader Thread loop end[0m
-[0;33mR [1665989646.368577] Reader Thread loop start[0m
-[0;33mR [1665989646.368577] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989646.368578] Machine 0 Accumulated Data: NOP: 255 PPS: 1584 DPS: 822 LF: 15.399998[0m
-[1;31m1 [1665989646.368582] Warning machine_id:1 is down[0m
-[0;32m1 [1665989646.368582] Machine 1 Accumulated Data: NOP: 255 PPS: 1584 DPS: 822 LF: 15.399998[0m
-[0;32m2 [1665989646.368583] Machine 2 Accumulated Data: NOP: 256 PPS: 1629 DPS: 835 LF: 15.599998[0m
-[0;33mR [1665989646.368584] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989646.807755] Reader Thread loop end[0m
-[0;33mR [1665989646.807758] Reader Thread loop start[0m
-[0;33mR [1665989646.807759] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989646.807759] Machine 0 Accumulated Data: NOP: 259 PPS: 1639 DPS: 845 LF: 16.199997[0m
-[1;31m1 [1665989646.807764] Warning machine_id:1 is down[0m
-[0;32m1 [1665989646.807764] Machine 1 Accumulated Data: NOP: 259 PPS: 1639 DPS: 845 LF: 16.199997[0m
-[0;32m2 [1665989646.807765] Machine 2 Accumulated Data: NOP: 260 PPS: 1684 DPS: 858 LF: 16.399998[0m
-[0;33mR [1665989646.807765] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989647.229420] Reader Thread loop end[0m
-[0;33mR [1665989647.229424] Reader Thread loop start[0m
-[0;33mR [1665989647.229425] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989647.230704] Machine 0 Accumulated Data: NOP: 263 PPS: 1694 DPS: 868 LF: 16.999998[0m
-[1;31m1 [1665989647.230706] Warning machine_id:1 is down[0m
-[0;32m1 [1665989647.230707] Machine 1 Accumulated Data: NOP: 263 PPS: 1694 DPS: 868 LF: 16.999998[0m
-[0;32m2 [1665989647.230707] Machine 2 Accumulated Data: NOP: 264 PPS: 1739 DPS: 881 LF: 17.199999[0m
-[0;33mR [1665989647.230708] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989647.588123] Printer Step[0m
-[1665989647] SUMMARY INFORMATION
+0       | 1  | 1      | 1665991392
+1       | 0  | 0      | 1665991392
+2       | 1  | 2      | 1665991391
+R [1665991394.342574] Reader Thread loop end
+R [1665991394.344952] Reader Thread loop start
+R [1665991394.344968] Reader Thread loop accessing_stats lock aquired
+0 [1665991394.344974] Machine 0 Accumulated Data: NOP: 180 PPS: 1026 DPS: 562 LF: 10.499998
+1 [1665991394.344984] Warning machine_id:1 is down
+1 [1665991394.344989] Machine 1 Accumulated Data: NOP: 180 PPS: 1026 DPS: 562 LF: 10.499998
+2 [1665991394.344996] Machine 2 Accumulated Data: NOP: 181 PPS: 1071 DPS: 575 LF: 10.699998
+R [1665991394.345002] Reader Thread loop  accessing_stats lock released
+R [1665991395.074290] Reader Thread loop end
+R [1665991395.075548] Reader Thread loop start
+R [1665991395.079279] Reader Thread loop accessing_stats lock aquired
+0 [1665991395.079294] Machine 0 Accumulated Data: NOP: 184 PPS: 1081 DPS: 585 LF: 11.299998
+1 [1665991395.079304] Warning machine_id:1 is down
+1 [1665991395.079310] Machine 1 Accumulated Data: NOP: 184 PPS: 1081 DPS: 585 LF: 11.299998
+2 [1665991395.079317] Machine 2 Accumulated Data: NOP: 185 PPS: 1126 DPS: 598 LF: 11.499998
+R [1665991395.079323] Reader Thread loop  accessing_stats lock released
+P [1665991395.466683] Printer Step
+[1665991395] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 3      | 1665989644
-1       | 0  | 0      | 1665989644
-2       | 1  | 2      | 1665989645
-[0;33mR [1665989647.658872] Reader Thread loop end[0m
-[0;33mR [1665989647.658876] Reader Thread loop start[0m
-[0;33mR [1665989647.658877] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989647.658877] Machine 0 Accumulated Data: NOP: 267 PPS: 1749 DPS: 891 LF: 17.799999[0m
-[1;31m1 [1665989647.658881] Warning machine_id:1 is down[0m
-[0;32m1 [1665989647.658882] Machine 1 Accumulated Data: NOP: 267 PPS: 1749 DPS: 891 LF: 17.799999[0m
-[0;32m2 [1665989647.658883] Machine 2 Accumulated Data: NOP: 268 PPS: 1794 DPS: 904 LF: 18.000000[0m
-[0;33mR [1665989647.658883] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989648.076817] Reader Thread loop end[0m
-[0;33mR [1665989648.076821] Reader Thread loop start[0m
-[0;33mR [1665989648.076821] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989648.076822] Machine 0 Accumulated Data: NOP: 271 PPS: 1804 DPS: 914 LF: 18.600000[0m
-[1;31m1 [1665989648.076826] Warning machine_id:1 is down[0m
-[0;32m1 [1665989648.076826] Machine 1 Accumulated Data: NOP: 271 PPS: 1804 DPS: 914 LF: 18.600000[0m
-[0;32m2 [1665989648.076827] Machine 2 Accumulated Data: NOP: 272 PPS: 1849 DPS: 927 LF: 18.800001[0m
-[0;33mR [1665989648.076828] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989648.506030] Reader Thread loop end[0m
-[0;33mR [1665989648.506034] Reader Thread loop start[0m
-[0;33mR [1665989648.506035] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989648.506035] Machine 0 Accumulated Data: NOP: 275 PPS: 1859 DPS: 937 LF: 19.400002[0m
-[1;31m1 [1665989648.506040] Warning machine_id:1 is down[0m
-[0;32m1 [1665989648.506040] Machine 1 Accumulated Data: NOP: 275 PPS: 1859 DPS: 937 LF: 19.400002[0m
-[0;32m2 [1665989648.506041] Machine 2 Accumulated Data: NOP: 276 PPS: 1904 DPS: 950 LF: 19.600002[0m
-[0;33mR [1665989648.506042] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989648.928271] Reader Thread loop end[0m
-[0;33mR [1665989648.928275] Reader Thread loop start[0m
-[0;33mR [1665989648.928276] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989648.928276] Machine 0 Accumulated Data: NOP: 279 PPS: 1914 DPS: 960 LF: 20.200003[0m
-[1;31m1 [1665989648.928281] Warning machine_id:1 is down[0m
-[0;32m1 [1665989648.928281] Machine 1 Accumulated Data: NOP: 279 PPS: 1914 DPS: 960 LF: 20.200003[0m
-[0;32m2 [1665989648.928282] Machine 2 Accumulated Data: NOP: 280 PPS: 1959 DPS: 973 LF: 20.400003[0m
-[0;33mR [1665989648.928282] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989649.347534] Reader Thread loop end[0m
-[0;33mR [1665989649.347539] Reader Thread loop start[0m
-[0;33mR [1665989649.347540] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989649.347540] Machine 0 Accumulated Data: NOP: 283 PPS: 1969 DPS: 983 LF: 21.000004[0m
-[1;31m1 [1665989649.347545] Warning machine_id:1 is down[0m
-[0;32m1 [1665989649.347545] Machine 1 Accumulated Data: NOP: 283 PPS: 1969 DPS: 983 LF: 21.000004[0m
-[0;32m2 [1665989649.347546] Machine 2 Accumulated Data: NOP: 284 PPS: 2014 DPS: 996 LF: 21.200005[0m
-[0;33mR [1665989649.347547] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989649.389093] Printer Step[0m
-[1665989649] SUMMARY INFORMATION
+0       | 1  | 3      | 1665991392
+1       | 0  | 0      | 1665991392
+2       | 1  | 2      | 1665991393
+R [1665991395.922275] Reader Thread loop end
+R [1665991395.927082] Reader Thread loop start
+R [1665991395.927092] Reader Thread loop accessing_stats lock aquired
+0 [1665991395.927097] Machine 0 Accumulated Data: NOP: 188 PPS: 1136 DPS: 608 LF: 12.099998
+1 [1665991395.927106] Warning machine_id:1 is down
+1 [1665991395.927111] Machine 1 Accumulated Data: NOP: 188 PPS: 1136 DPS: 608 LF: 12.099998
+2 [1665991395.927116] Machine 2 Accumulated Data: NOP: 189 PPS: 1181 DPS: 621 LF: 12.299998
+R [1665991395.927122] Reader Thread loop  accessing_stats lock released
+R [1665991396.734427] Reader Thread loop end
+R [1665991396.735336] Reader Thread loop start
+R [1665991396.735838] Reader Thread loop accessing_stats lock aquired
+0 [1665991396.739400] Machine 0 Accumulated Data: NOP: 192 PPS: 1191 DPS: 631 LF: 12.899999
+1 [1665991396.739415] Warning machine_id:1 is down
+1 [1665991396.739420] Machine 1 Accumulated Data: NOP: 192 PPS: 1191 DPS: 631 LF: 12.899999
+2 [1665991396.739425] Machine 2 Accumulated Data: NOP: 193 PPS: 1236 DPS: 644 LF: 13.099998
+R [1665991396.739431] Reader Thread loop  accessing_stats lock released
+P [1665991397.267542] Printer Step
+[1665991397] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 5      | 1665989644
-1       | 0  | 0      | 1665989644
-2       | 1  | 4      | 1665989645
-[0;33mR [1665989649.872083] Reader Thread loop end[0m
-[0;33mR [1665989649.872087] Reader Thread loop start[0m
-[0;33mR [1665989649.872087] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989649.872088] Machine 0 Accumulated Data: NOP: 287 PPS: 2024 DPS: 1006 LF: 21.800005[0m
-[1;31m1 [1665989649.872092] Warning machine_id:1 is down[0m
-[0;32m1 [1665989649.872092] Machine 1 Accumulated Data: NOP: 287 PPS: 2024 DPS: 1006 LF: 21.800005[0m
-[0;32m2 [1665989649.872093] Machine 2 Accumulated Data: NOP: 288 PPS: 2069 DPS: 1019 LF: 22.000006[0m
-[0;33mR [1665989649.872094] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989650.604305] Reader Thread loop end[0m
-[0;33mR [1665989650.604309] Reader Thread loop start[0m
-[0;33mR [1665989650.604310] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989650.604310] Machine 0 Accumulated Data: NOP: 291 PPS: 2079 DPS: 1029 LF: 22.600006[0m
-[1;31m1 [1665989650.604314] Warning machine_id:1 is down[0m
-[0;32m1 [1665989650.604315] Machine 1 Accumulated Data: NOP: 291 PPS: 2079 DPS: 1029 LF: 22.600006[0m
-[0;32m2 [1665989650.604315] Machine 2 Accumulated Data: NOP: 292 PPS: 2124 DPS: 1042 LF: 22.800007[0m
-[0;33mR [1665989650.604316] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989651.043819] Reader Thread loop end[0m
-[0;33mR [1665989651.043823] Reader Thread loop start[0m
-[0;33mR [1665989651.043824] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989651.043824] Machine 0 Accumulated Data: NOP: 295 PPS: 2134 DPS: 1052 LF: 23.400007[0m
-[1;31m1 [1665989651.043828] Warning machine_id:1 is down[0m
-[0;32m1 [1665989651.043828] Machine 1 Accumulated Data: NOP: 295 PPS: 2134 DPS: 1052 LF: 23.400007[0m
-[0;32m2 [1665989651.043829] Machine 2 Accumulated Data: NOP: 296 PPS: 2179 DPS: 1065 LF: 23.600008[0m
-[0;33mR [1665989651.043830] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989651.190803] Printer Step[0m
-[1665989651] SUMMARY INFORMATION
+0       | 1  | 5      | 1665991392
+1       | 0  | 0      | 1665991392
+2       | 1  | 4      | 1665991393
+R [1665991397.577077] Reader Thread loop end
+R [1665991397.577106] Reader Thread loop start
+R [1665991397.577111] Reader Thread loop accessing_stats lock aquired
+0 [1665991397.577116] Machine 0 Accumulated Data: NOP: 196 PPS: 1246 DPS: 654 LF: 13.699999
+1 [1665991397.577125] Warning machine_id:1 is down
+1 [1665991397.577130] Machine 1 Accumulated Data: NOP: 196 PPS: 1246 DPS: 654 LF: 13.699999
+2 [1665991397.577136] Machine 2 Accumulated Data: NOP: 197 PPS: 1291 DPS: 667 LF: 13.899999
+R [1665991397.577141] Reader Thread loop  accessing_stats lock released
+R [1665991398.319706] Reader Thread loop end
+R [1665991398.320668] Reader Thread loop start
+R [1665991398.324875] Reader Thread loop accessing_stats lock aquired
+0 [1665991398.324898] Machine 0 Accumulated Data: NOP: 200 PPS: 1301 DPS: 677 LF: 14.499999
+1 [1665991398.324908] Warning machine_id:1 is down
+1 [1665991398.324913] Machine 1 Accumulated Data: NOP: 200 PPS: 1301 DPS: 677 LF: 14.499999
+2 [1665991398.324918] Machine 2 Accumulated Data: NOP: 201 PPS: 1346 DPS: 690 LF: 14.699999
+R [1665991398.324924] Reader Thread loop  accessing_stats lock released
+P [1665991399.068463] Printer Step
+[1665991399] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 1  | 7      | 1665989644
-1       | 0  | 0      | 1665989644
-2       | 1  | 6      | 1665989645
-[0;33mR [1665989651.600812] Reader Thread loop end[0m
-[0;33mR [1665989651.600815] Reader Thread loop start[0m
-[0;33mR [1665989651.600816] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989651.600816] Machine 0 Accumulated Data: NOP: 299 PPS: 2189 DPS: 1075 LF: 24.200008[0m
-[1;31m1 [1665989651.600821] Warning machine_id:1 is down[0m
-[0;32m1 [1665989651.600821] Machine 1 Accumulated Data: NOP: 299 PPS: 2189 DPS: 1075 LF: 24.200008[0m
-[0;32m2 [1665989651.600822] Machine 2 Accumulated Data: NOP: 300 PPS: 2234 DPS: 1088 LF: 24.400009[0m
-[0;33mR [1665989651.600822] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989652.085583] Reader Thread loop end[0m
-[0;33mR [1665989652.085587] Reader Thread loop start[0m
-[0;33mR [1665989652.085588] Reader Thread loop accessing_stats lock aquired[0m
-[0;32m0 [1665989652.085588] Machine 0 Accumulated Data: NOP: 303 PPS: 2244 DPS: 1098 LF: 25.000010[0m
-[1;31m1 [1665989652.085593] Warning machine_id:1 is down[0m
-[0;32m1 [1665989652.085594] Machine 1 Accumulated Data: NOP: 303 PPS: 2244 DPS: 1098 LF: 25.000010[0m
-[0;32m2 [1665989652.085594] Machine 2 Accumulated Data: NOP: 304 PPS: 2289 DPS: 1111 LF: 25.200010[0m
-[0;33mR [1665989652.085595] Reader Thread loop  accessing_stats lock released[0m
-[0;32m1 [1665989652.307246] Machine 1 Line 5: 1,5,0.400000,6,9[0m
-[0;32m1 [1665989652.307252] Machine 1 Line 5: 1,5,0.400000,6,9 [DATA STORED][0m
-[0;33m1 [1665989652.307253] Sleeping for 1920 msec[0m
-[0;32m0 [1665989652.485095] Machine 0 Line 5: 0,0,0.000000,0,0[0m
-[0;32m0 [1665989652.485101] Machine 0 Line 5: 0,0,0.000000,0,0 [DATA STORED][0m
-[0;33m0 [1665989652.486633] Sleeping for 780 msec[0m
-[0;33mR [1665989652.530371] Reader Thread loop end[0m
-[0;33mR [1665989652.530375] Reader Thread loop start[0m
-[0;33mR [1665989652.530376] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989652.530376] Warning machine_id:0 is down[0m
-[0;32m0 [1665989652.530377] Machine 0 Accumulated Data: NOP: 304 PPS: 2289 DPS: 1111 LF: 25.200010[0m
-[0;32m1 [1665989652.530380] Machine 1 Accumulated Data: NOP: 309 PPS: 2295 DPS: 1120 LF: 25.600010[0m
-[0;32m2 [1665989652.530382] Machine 2 Accumulated Data: NOP: 310 PPS: 2340 DPS: 1133 LF: 25.800011[0m
-[0;33mR [1665989652.530382] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989652.982670] Reader Thread loop end[0m
-[0;33mR [1665989652.982674] Reader Thread loop start[0m
-[0;33mR [1665989652.982674] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989652.982675] Warning machine_id:0 is down[0m
-[0;32m0 [1665989652.982675] Machine 0 Accumulated Data: NOP: 310 PPS: 2340 DPS: 1133 LF: 25.800011[0m
-[0;32m1 [1665989652.982679] Machine 1 Accumulated Data: NOP: 315 PPS: 2346 DPS: 1142 LF: 26.200010[0m
-[0;32m2 [1665989652.982680] Machine 2 Accumulated Data: NOP: 316 PPS: 2391 DPS: 1155 LF: 26.400011[0m
-[0;33mR [1665989652.982681] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989652.991283] Printer Step[0m
-[1665989652] SUMMARY INFORMATION
+0       | 1  | 7      | 1665991392
+1       | 0  | 0      | 1665991392
+2       | 1  | 6      | 1665991393
+R [1665991399.078028] Reader Thread loop end
+R [1665991399.078050] Reader Thread loop start
+R [1665991399.078056] Reader Thread loop accessing_stats lock aquired
+0 [1665991399.078062] Machine 0 Accumulated Data: NOP: 204 PPS: 1356 DPS: 700 LF: 15.299999
+1 [1665991399.078070] Warning machine_id:1 is down
+1 [1665991399.078075] Machine 1 Accumulated Data: NOP: 204 PPS: 1356 DPS: 700 LF: 15.299999
+2 [1665991399.078081] Machine 2 Accumulated Data: NOP: 205 PPS: 1401 DPS: 713 LF: 15.499999
+R [1665991399.078087] Reader Thread loop  accessing_stats lock released
+R [1665991399.913408] Reader Thread loop end
+R [1665991399.913431] Reader Thread loop start
+R [1665991399.913437] Reader Thread loop accessing_stats lock aquired
+0 [1665991399.913442] Machine 0 Accumulated Data: NOP: 208 PPS: 1411 DPS: 723 LF: 16.099998
+1 [1665991399.913451] Warning machine_id:1 is down
+1 [1665991399.913456] Machine 1 Accumulated Data: NOP: 208 PPS: 1411 DPS: 723 LF: 16.099998
+2 [1665991399.913461] Machine 2 Accumulated Data: NOP: 209 PPS: 1456 DPS: 736 LF: 16.299999
+R [1665991399.913466] Reader Thread loop  accessing_stats lock released
+1 [1665991400.173412] Machine 1 Line 5: 1,5,0.400000,6,9
+1 [1665991400.173437] Machine 1 Line 5: 1,5,0.400000,6,9 [DATA STORED]
+1 [1665991400.173443] Sleeping for 1920 msec
+0 [1665991400.350007] Machine 0 Line 5: 0,0,0.000000,0,0
+0 [1665991400.350035] Machine 0 Line 5: 0,0,0.000000,0,0 [DATA STORED]
+0 [1665991400.350041] Sleeping for 780 msec
+R [1665991400.766889] Reader Thread loop end
+R [1665991400.772563] Reader Thread loop start
+R [1665991400.772579] Reader Thread loop accessing_stats lock aquired
+0 [1665991400.772585] Warning machine_id:0 is down
+0 [1665991400.772592] Machine 0 Accumulated Data: NOP: 209 PPS: 1456 DPS: 736 LF: 16.299999
+1 [1665991400.772602] Machine 1 Accumulated Data: NOP: 214 PPS: 1462 DPS: 745 LF: 16.699999
+2 [1665991400.772609] Machine 2 Accumulated Data: NOP: 215 PPS: 1507 DPS: 758 LF: 16.900000
+R [1665991400.772616] Reader Thread loop  accessing_stats lock released
+P [1665991400.880358] Printer Step
+[1665991400] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 0  | 0      | 1665989652
-1       | 1  | 0      | 1665989652
-2       | 1  | 7      | 1665989645
-[0;33mR [1665989653.430740] Reader Thread loop end[0m
-[0;33mR [1665989653.430744] Reader Thread loop start[0m
-[0;33mR [1665989653.430745] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989653.430745] Warning machine_id:0 is down[0m
-[0;32m0 [1665989653.430746] Machine 0 Accumulated Data: NOP: 316 PPS: 2391 DPS: 1155 LF: 26.400011[0m
-[0;32m1 [1665989653.430750] Machine 1 Accumulated Data: NOP: 321 PPS: 2397 DPS: 1164 LF: 26.800011[0m
-[0;32m2 [1665989653.430751] Machine 2 Accumulated Data: NOP: 322 PPS: 2442 DPS: 1177 LF: 27.000011[0m
-[0;33mR [1665989653.430751] Reader Thread loop  accessing_stats lock released[0m
-[0;32m2 [1665989653.665523] Machine 2 Line 5: 1,1,0.700000,2,19[0m
-[0;32m2 [1665989653.665530] Machine 2 Line 5: 1,1,0.700000,2,19 [DATA STORED][0m
-[0;33m2 [1665989653.665531] Sleeping for 1200 msec[0m
-[0;33mR [1665989654.011755] Reader Thread loop end[0m
-[0;33mR [1665989654.011759] Reader Thread loop start[0m
-[0;33mR [1665989654.011760] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989654.011760] Warning machine_id:0 is down[0m
-[0;32m0 [1665989654.011761] Machine 0 Accumulated Data: NOP: 322 PPS: 2442 DPS: 1177 LF: 27.000011[0m
-[0;32m1 [1665989654.011765] Machine 1 Accumulated Data: NOP: 327 PPS: 2448 DPS: 1186 LF: 27.400011[0m
-[0;32m2 [1665989654.011766] Machine 2 Accumulated Data: NOP: 328 PPS: 2450 DPS: 1205 LF: 28.100012[0m
-[0;33mR [1665989654.011767] Reader Thread loop  accessing_stats lock released[0m
-[0;33mR [1665989654.579823] Reader Thread loop end[0m
-[0;33mR [1665989654.579827] Reader Thread loop start[0m
-[0;33mR [1665989654.579827] Reader Thread loop accessing_stats lock aquired[0m
-[1;31m0 [1665989654.579828] Warning machine_id:0 is down[0m
-[0;32m0 [1665989654.579828] Machine 0 Accumulated Data: NOP: 328 PPS: 2450 DPS: 1205 LF: 28.100012[0m
-[0;32m1 [1665989654.579832] Machine 1 Accumulated Data: NOP: 333 PPS: 2456 DPS: 1214 LF: 28.500011[0m
-[0;32m2 [1665989654.579833] Machine 2 Accumulated Data: NOP: 334 PPS: 2458 DPS: 1233 LF: 29.200012[0m
-[0;33mR [1665989654.579834] Reader Thread loop  accessing_stats lock released[0m
-[0;33mP [1665989654.791798] Printer Step[0m
-[1665989654] SUMMARY INFORMATION
+0       | 1  | 8      | 1665991392
+1       | 0  | 0      | 1665991392
+2       | 1  | 7      | 1665991393
+2 [1665991401.526028] Machine 2 Line 5: 1,1,0.700000,2,19
+2 [1665991401.528153] Machine 2 Line 5: 1,1,0.700000,2,19 [DATA STORED]
+2 [1665991401.528171] Sleeping for 1200 msec
+R [1665991401.620045] Reader Thread loop end
+R [1665991401.621538] Reader Thread loop start
+R [1665991401.621552] Reader Thread loop accessing_stats lock aquired
+0 [1665991401.621557] Warning machine_id:0 is down
+0 [1665991401.621562] Machine 0 Accumulated Data: NOP: 215 PPS: 1507 DPS: 758 LF: 16.900000
+1 [1665991401.621571] Machine 1 Accumulated Data: NOP: 220 PPS: 1513 DPS: 767 LF: 17.299999
+2 [1665991401.621576] Machine 2 Accumulated Data: NOP: 221 PPS: 1515 DPS: 786 LF: 18.000000
+R [1665991401.621582] Reader Thread loop  accessing_stats lock released
+R [1665991402.311010] Reader Thread loop end
+R [1665991402.312327] Reader Thread loop start
+R [1665991402.316724] Reader Thread loop accessing_stats lock aquired
+0 [1665991402.316746] Warning machine_id:0 is down
+0 [1665991402.316752] Machine 0 Accumulated Data: NOP: 221 PPS: 1515 DPS: 786 LF: 18.000000
+1 [1665991402.316761] Machine 1 Accumulated Data: NOP: 226 PPS: 1521 DPS: 795 LF: 18.400000
+2 [1665991402.316767] Machine 2 Accumulated Data: NOP: 227 PPS: 1523 DPS: 814 LF: 19.100000
+R [1665991402.316772] Reader Thread loop  accessing_stats lock released
+P [1665991402.683890] Printer Step
+[1665991402] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 0  | 0      | 1665989652
-1       | 1  | 2      | 1665989652
-2       | 1  | 1      | 1665989653
-[0;33mR [1665989655.054973] Reader Thread loop end[0m
-[0;33mP [1665989656.593844] Printer Step[0m
-[1665989656] SUMMARY INFORMATION
+0       | 0  | 0      | 1665991400
+1       | 1  | 2      | 1665991400
+2       | 1  | 1      | 1665991401
+R [1665991403.165228] Reader Thread loop end
+P [1665991404.484029] Printer Step
+[1665991404] SUMMARY INFORMATION
 MACHINE | UP | UPTIME | LAST UPDATE  
 -----------------------------------------------------
-0       | 0  | 0      | 1665989652
-1       | 1  | 4      | 1665989652
-2       | 1  | 3      | 1665989653
+0       | 0  | 0      | 1665991400
+1       | 1  | 4      | 1665991400
+2       | 1  | 3      | 1665991401
+student@ELEC377Home:~/elec377-Tues-31/lab2$ 

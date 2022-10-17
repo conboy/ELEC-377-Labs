@@ -1,0 +1,38 @@
+To test, we looked at the output log uptimes versus the delay in the machine text files. On the first line in the machine txt files,
+there is a delay of 900, 1020, 1240. Looking at the uptimes in the output logs for each machine, they do not go over 
+their delay time specified in the machine txt file, which is good. Below is the last uptime they have before resetting
+to back to zero.
+
+MACHINE | UP | UPTIME | LAST UPDATE  
+-----------------------------------------------------
+0       | 1  | 9      | 1665991381
+1       | 1  | 8      | 1665991382
+2       | 1  | 8      | 1665991382
+
+// BELOW IS OUTPUT AFTER THE ABOVE ONE
+
+MACHINE | UP | UPTIME | LAST UPDATE  
+-----------------------------------------------------
+0       | 0  | 0      | 1665991389
+1       | 0  | 0      | 1665991390
+2       | 0  | 0      | 1665991390
+
+Looking at the second line in the machine txt file, the delay for all the machines is 8000. In the output logs it can 
+be observed that the machines do not go over the specified delay which means it works properly. Machine 1 is showing
+an uptime of zero because it is down, eventually it will reach it's specified delay and reset to 0. 
+
+// MACHINE 0 AND 2 SHOWING AN UPTIME OF 8 AND 7 BEFORE RESETTING TO ZERO
+
+MACHINE | UP | UPTIME | LAST UPDATE  
+-----------------------------------------------------
+0       | 1  | 8      | 1665991392
+1       | 0  | 0      | 1665991392
+2       | 1  | 7      | 1665991393
+
+// LOG AFTER ABOVE ONE
+
+MACHINE | UP | UPTIME | LAST UPDATE  
+-----------------------------------------------------
+0       | 0  | 0      | 1665991400
+1       | 1  | 2      | 1665991400
+2       | 1  | 1      | 1665991401
