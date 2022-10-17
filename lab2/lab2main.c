@@ -114,6 +114,7 @@ int main(int argc, char * argv[]){
     pthread_t printer_id;
     printer_param.num_machines = num_monitor_threads;
     printer_param.shmemptr = &shared_memory;
+    printer_param.print_period = printer_delay;
 
     pthread_create(&(printer_id), &thread_attr, printer_thread, (void * )&(printer_param));
     
@@ -170,6 +171,12 @@ void init_shared( struct shared_segment * shmemptr ){
 //-
 
 void monitor_update_status_entry(int machine_id, int status_id, struct status * cur_read_stat, struct shared_segment * shmemptr ){
+    colourMsg(machId[machine_id] ,CONSOLE_GREEN,"Machine %d Line %d: %d,%d,%f,%d,%d",machine_id,status_id,
+			     (cur_read_stat->machine_state),
+			     (cur_read_stat->num_of_processes),
+			     (cur_read_stat->load_factor),
+			     (cur_read_stat->packets_per_second),
+			     (cur_read_stat->discards_per_second));
 
     //------------------------------------
     //  enter critical section for monitor
@@ -304,14 +311,20 @@ void * reader_thread(void * parms){
         // write summary checksum
         shmemptr -> summary.checksum = summary_checksum;
 
+        // for tracking when machine first goes up
+        int machineUp[] = {0,0,0};
+
         // update machine state, last update time
         for(int i = 0; i < num_machines; i++){
             // machine state
-            shmemptr -> summary.machines_state[i] = shmemptr-> machine_stats[i].machine_state; 
+            shmemptr->summary.machines_state[i] = read_machines_state[i];
+            shmemptr->summary.machines_last_updated[i] = read_update_times[i];
 
             // last update time if machine is up
-            if (shmemptr->machine_stats[i].machine_state == 0) {
-                shmemptr -> summary.machines_last_updated[i] = read_update_times[i]; // last 
+            if(read_machines_state[i] == 1 && machineUp[i] == 0){
+                machineUp[i] == 1;
+                shmemptr->summary.machines_online_since[i] = shmemptr->summary.machines_last_updated[i];
+                
             }
         }
 
@@ -369,8 +382,8 @@ void * printer_thread(void * parms){
         threadLog('P',"Printer Step");
 
         printf("[%u] SUMMARY INFORMATION\n", cur_time);
-        printf("MACHINE | UP | UPTIME                 | LAST UPDATE  \n");
-        
+        printf("MACHINE | UP | UPTIME | LAST UPDATE  \n");
+        printf("-----------------------------------------------------\n");
         for (int i = 0; i < num_machines; i++){
             // calculate uptime if machine is up
             if (shmemptr -> summary.machines_state[i] == 1){
@@ -381,11 +394,11 @@ void * printer_thread(void * parms){
             }
 
             // print summary information
-            printf("%d       | %u  |\t%u\t%u\n", i, shmemptr -> summary.machines_state[i], cur_uptime , shmemptr -> summary.machines_last_updated[i]);
+            printf("%d       | %u  | %u      | %u\n", i, shmemptr -> summary.machines_state[i], cur_uptime , shmemptr -> summary.machines_last_updated[i]);
             
 
         }
-        printf("\n-----------------------------------------------------\n");
+        
         
         // release summary mutex
         sem_post(access_summary);
