@@ -111,6 +111,11 @@ int main(int argc, char * argv[]){
 
     // TODO: stage 3
     // start printer thread
+    pthread_t printer_id;
+    printer_param.num_machines = num_monitor_threads;
+    printer_param.shmemptr = &shared_memory;
+
+    pthread_create(&(printer_id), &thread_attr, printer_thread, (void * )&(printer_param));
     
     // ---------------------------------------------------
     // FINISH - use pthread_exit instead of return.
@@ -294,15 +299,21 @@ void * reader_thread(void * parms){
         //=======================
         
         // lock summary semaphore
-        
+        sem_wait(access_summary);
+
         // write summary checksum
-        
+        shmemptr -> summary.checksum = summary_checksum;
+
         // update machine uptime sand last heard
         
         // calculate new averages
-        
+        shmemptr -> summary.avg_procs = total_procs / num_machines;
+	    shmemptr -> summary.avg_lf = total_lf / num_machines;
+	    shmemptr -> summary.avg_pps = total_pps / num_machines;
+	    shmemptr -> summary.avg_dps = total_dps / num_machines;
+
         // releast summary semaphore
-        
+        sem_post(access_summary);
         //=======================
         // are the monitors still running? (Stage 2)
         //=======================
