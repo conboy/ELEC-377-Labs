@@ -304,8 +304,17 @@ void * reader_thread(void * parms){
         // write summary checksum
         shmemptr -> summary.checksum = summary_checksum;
 
-        // update machine uptime sand last heard
-        
+        // update machine state, last update time
+        for(int i = 0; i < num_machines; i++){
+            // machine state
+            shmemptr -> summary.machines_state[i] = shmemptr-> machine_stats[i].machine_state; 
+
+            // last update time if machine is up
+            if (shmemptr->machine_stats[i].machine_state == 0) {
+                shmemptr -> summary.machines_last_updated[i] = read_update_times[i]; // last 
+            }
+        }
+
         // calculate new averages
         shmemptr -> summary.avg_procs = total_procs / num_machines;
 	    shmemptr -> summary.avg_lf = total_lf / num_machines;
@@ -317,7 +326,7 @@ void * reader_thread(void * parms){
         //=======================
         // are the monitors still running? (Stage 2)
         //=======================
-        
+
         // Check if there's more updates, stop if theres no more
         if (shmemptr -> numMonitors == 0) more_updates = 0;
 
@@ -349,23 +358,29 @@ void * printer_thread(void * parms){
         msleep(print_period);
         
         // aquire summary mutex
-        
+        sem_wait(mutex);
+
         // get current time
         
+
         // printe summary
         threadLog('P',"Printer Step");
 
         printf("[%u] SUMMARY INFORMATION\n", get_current_unix_time());
         printf("MACHINE | UP | UPTIME                 | LAST UPDATE  \n");
-        printf("-----------------------------------------------------\n");
         
         for (int i = 0; i < num_machines; i++){
+            printf("%d\t%u\t%u\t%u", i, shmemptr -> summary.machines_state[i], get_current_unix_time() - shmemptr -> summary.machines_online_since[i], shmemptr -> summary.machines_last_updated[i]);
+            printf("-----------------------------------------------------\n");
+
         }
         
+        
         // release summary mutex
-
+        sem_post(mutex);
 
         //Are the monitors still running.
+        if (shmemptr -> numMonitors == 0) more_updates = 0;
     }
     
     pthread_exit(0);
