@@ -257,6 +257,7 @@ void * reader_thread(void * parms){
     unsigned read_update_times[MAX_MACHINES];
     int read_machines_state[MAX_MACHINES];
     
+    // to calculate averages
     int total_procs, total_pps, total_dps = 0;
     float total_lf = 0;
     
@@ -282,13 +283,14 @@ void * reader_thread(void * parms){
                 if (shmemptr->machine_stats[i].machine_state == 0) {
                     colourMsg(machId[i] ,CONSOLE_RED,"Warning machine_id:%d is down", i);
                 }
-                // Accumulate data of the machine
-                total_procs += shmemptr-> machine_stats[i].num_of_processes;
-                total_pps += shmemptr-> machine_stats[i].packets_per_second;
-                total_dps += shmemptr-> machine_stats[i].discards_per_second;
-                total_lf += shmemptr-> machine_stats[i].load_factor;
-                colourMsg(machId[i] ,CONSOLE_GREEN,"Machine %d Accumulated Data: NOP: %d PPS: %d DPS: %d LF: %f", i, total_procs, total_pps, total_dps, total_lf);
+                
             }
+            // Accumulate data of the machine
+            total_procs += shmemptr-> machine_stats[i].num_of_processes;
+            total_pps += shmemptr-> machine_stats[i].packets_per_second;
+            total_dps += shmemptr-> machine_stats[i].discards_per_second;
+            total_lf += shmemptr-> machine_stats[i].load_factor;
+            colourMsg(machId[i] ,CONSOLE_GREEN,"Machine %d Accumulated Data: NOP: %d PPS: %d DPS: %d LF: %f", i, total_procs, total_pps, total_dps, total_lf);
         }
         
         // release stats semaphore

@@ -1,3 +1,15 @@
 SOLUTION
 
-Opened three semaphores and initialized the shared memory segment.
+Opened three semaphores: access_stats, access_summary, mutex and initialized the shared memory segment.
+Started monitor threads for each machine, a reader thread, and a printer thread. Each monitor thread 
+calls the monitor_update_status_entry function for each line in the monitor status files after the 
+specified delay. The function updates the shared memory with data sent from the simulated remote machine. 
+A modified version of the reader writer problem is used to implement this. Multiple monitors are allowed 
+in the critical section but only one summarizer thread is allowed in the critical section. The read field
+is set to 0 which means unread. The reader thread reads and recalculates summary fields for every new 
+update. It also sends a message if a machine is down. It's implemented by using a while loop that goes
+as long as theres more udpates and uses the access_stats semaphore to lock the critical section where It
+takes information from the shared memory object. It then updates the shared memory object summary using
+the access_summary semaphore. Lastly the printer thread uses a access_summary semaphore to print summary
+information.
+
