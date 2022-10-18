@@ -139,7 +139,11 @@ char * skipChar(char * charPtr, char skip){
 
 int splitCommandLine(char * commandBuffer, char* args[], int maxargs){
    // TODO: Contents of function
+
+    for (int i=1; i< sizeof(commandBuffer)/sizeof(char); i++){
     
+
+    }
    // TODO: reutrn proper value
    return 0;
 }
