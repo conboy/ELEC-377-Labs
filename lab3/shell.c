@@ -155,25 +155,34 @@ int splitCommandLine(char * commandBuffer, char* args[], int maxargs){
    // TODO: Contents of function
    int numWords = 0; 
    char * charPtr;
+    printf("%s\n", commandBuffer);
 
    // Get pointer to first letter of first word in commandBuffer
    charPtr = skipChar(commandBuffer, ' ');
    // Add pointer to args array
    args[numWords] = charPtr;
-   printf("letter %c\n\n", *charPtr);
+   printf("letter %c\n\n", *args[numWords]);
    // Increment number of words
    numWords++;
+   
 
-   // Get pointers to characters of the beginning of each word in the commandBuffer and store them in args
-   while (*charPtr != '\0'){
-    while (* charPtr != ' ' && * charPtr != '\0') charPtr++;
+   while (1) {
+    // Go to first Space
+    charPtr = strchr(charPtr, ' ');
+    if (charPtr == NULL) {
+        break;
+    }
+    // Change value to \0 and go to the next char
+    *charPtr = '\0';
+    charPtr++;
     charPtr = skipChar(charPtr, ' ');
-    if (*charPtr == '\0') break;
+    // Add pointer to args array
     args[numWords] = charPtr;
-    printf("letter %c\n\n", *charPtr);
+    printf("letter %c\n\n", *args[numWords]);
+    // Increment number of words
     numWords++;
    }
-
+   
    return numWords;
 }
 
