@@ -1,0 +1,10 @@
+Testing the splitCommandLine function and it works as expected
+%> asdasd
+1
+0: asdasd
+%>   this is  a sentence
+4
+0: this
+1: is
+2: a
+3: sentence

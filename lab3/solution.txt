@@ -1,0 +1,5 @@
+the skipChar() function takes in a pointer to the first character in the 
+commandBuffer array and gets rid of the leading spaces.
+
+the splitCommandLine() function parses the arguments from the commandBuffer
+with the help of the skipChar() function.

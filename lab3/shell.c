@@ -50,7 +50,7 @@ char * skipChar(char * charPtr, char skip);
 
 int main() {
     // Testing for skipChar
-    char name[22] = {' ', ' ', 't', 'h', 'i', 's', ' ', 'i', 's', ' ', ' ', 'a', ' ', 's', 'e', 'n', 't', 'e', 'n', 'c', 'e', '\0'}; 
+    //char name[22] = {' ', ' ', 't', 'h', 'i', 's', ' ', 'i', 's', ' ', ' ', 'a', ' ', 's', 'e', 'n', 't', 'e', 'n', 'c', 'e', '\0'}; 
 
     
     
@@ -63,8 +63,7 @@ int main() {
     char *args[MAXARGS+1];
 
     // Testing for splitCommandLine
-    int numWords = splitCommandLine(name, args, MAXARGS+1);
-    printf("Number of words: %d\n", numWords);
+
 
     // print prompt.. fflush is needed because
     // stdout is line buffered, and won't
@@ -84,7 +83,7 @@ int main() {
 	}
 
 	// split command line into words.(Step 2)
-    
+    int nargs = splitCommandLine(commandBuffer, args, MAXARGS+1);
 	// TODO
 
 	// add a null to end of array (Step 2)
@@ -92,11 +91,11 @@ int main() {
 	// TODO
 
 	// debugging
-	//printf("%d\n", nargs);
-	//int i;
-	//for (i = 0; i < nargs; i++){
-	//   printf("%d: %s\n",i,args[i]);
-	//}
+	printf("%d\n", nargs);
+	int i;
+	for (i = 0; i < nargs; i++){
+	  printf("%d: %s\n",i,args[i]);
+	}
 	// element just past nargs
 	//printf("%d: %x\n",i, args[i]);
 
@@ -135,7 +134,7 @@ int main() {
 char * skipChar(char * charPtr, char skip){
     if (*charPtr == '\0') return charPtr;
     while (*charPtr == ' ') charPtr++;
-    printf("New First char: '%c'\n", *charPtr);
+
     return charPtr;
 }
 
@@ -155,13 +154,13 @@ int splitCommandLine(char * commandBuffer, char* args[], int maxargs){
    // TODO: Contents of function
    int numWords = 0; 
    char * charPtr;
-    printf("%s\n", commandBuffer);
+
 
    // Get pointer to first letter of first word in commandBuffer
    charPtr = skipChar(commandBuffer, ' ');
    // Add pointer to args array
    args[numWords] = charPtr;
-   printf("letter %c\n\n", *args[numWords]);
+
    // Increment number of words
    numWords++;
    
@@ -178,11 +177,11 @@ int splitCommandLine(char * commandBuffer, char* args[], int maxargs){
     charPtr = skipChar(charPtr, ' ');
     // Add pointer to args array
     args[numWords] = charPtr;
-    printf("letter %c\n\n", *args[numWords]);
+
     // Increment number of words
     numWords++;
    }
-   
+
    return numWords;
 }
 
