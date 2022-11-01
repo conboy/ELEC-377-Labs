@@ -35,6 +35,7 @@
 int splitCommandLine(char * commandBuffer, char* args[], int maxargs);
 int doInternalCommand(char * args[], int nargs);
 int doProgram(char * args[], int nargs);
+char * skipChar(char * charPtr, char skip);
 
 //+
 // Function:	main
@@ -48,10 +49,22 @@ int doProgram(char * args[], int nargs);
 //-
 
 int main() {
+    // Testing for skipChar
+    char name[22] = {' ', ' ', 't', 'h', 'i', 's', ' ', 'i', 's', ' ', ' ', 'a', ' ', 's', 'e', 'n', 't', 'e', 'n', 'c', 'e', '\0'}; 
+
+    
+    
+    
+    
+
 
     char commandBuffer[CMD_BUFFSIZE];
     // note the plus one, allows for an extra null
     char *args[MAXARGS+1];
+
+    // Testing for splitCommandLine
+    int numWords = splitCommandLine(name, args, MAXARGS+1);
+    printf("Number of words: %d\n", numWords);
 
     // print prompt.. fflush is needed because
     // stdout is line buffered, and won't
@@ -71,7 +84,7 @@ int main() {
 	}
 
 	// split command line into words.(Step 2)
-
+    
 	// TODO
 
 	// add a null to end of array (Step 2)
@@ -108,7 +121,7 @@ int main() {
 //+
 // Function:	skipChar
 //
-// Purpose:	TODO: finish description of function
+// Purpose:	To get rid of spaces at the beginning of the commandBuffer
 //
 // Parameters:
 //    charPtr	Pointer to string
@@ -120,9 +133,10 @@ int main() {
 //-
 
 char * skipChar(char * charPtr, char skip){
-    // TODO: contents of function
-    // TODO: replace null with proper value
-    return NULL;
+    if (*charPtr == '\0') return charPtr;
+    while (*charPtr == ' ') charPtr++;
+    printf("New First char: '%c'\n", *charPtr);
+    return charPtr;
 }
 
 //+
@@ -139,13 +153,28 @@ char * skipChar(char * charPtr, char skip){
 
 int splitCommandLine(char * commandBuffer, char* args[], int maxargs){
    // TODO: Contents of function
+   int numWords = 0; 
+   char * charPtr;
 
-    for (int i=1; i< sizeof(commandBuffer)/sizeof(char); i++){
-    
+   // Get pointer to first letter of first word in commandBuffer
+   charPtr = skipChar(commandBuffer, ' ');
+   // Add pointer to args array
+   args[numWords] = charPtr;
+   printf("letter %c\n\n", *charPtr);
+   // Increment number of words
+   numWords++;
 
-    }
-   // TODO: reutrn proper value
-   return 0;
+   // Get pointers to characters of the beginning of each word in the commandBuffer and store them in args
+   while (*charPtr != '\0'){
+    while (* charPtr != ' ' && * charPtr != '\0') charPtr++;
+    charPtr = skipChar(charPtr, ' ');
+    if (*charPtr == '\0') break;
+    args[numWords] = charPtr;
+    printf("letter %c\n\n", *charPtr);
+    numWords++;
+   }
+
+   return numWords;
 }
 
 ////////////////////////////// External Program  (Note this is step 4, complete doeInternalCommand first!!) ///////////////////////////////////
