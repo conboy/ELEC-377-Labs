@@ -228,9 +228,9 @@ struct cmdStruct{
 // prototypes for command handling functions
 // TODO: add prototype for each comamand function
 void exitFunc (char *args[], int nargs);
-void pwdFunc(char* args[], int maxargs);
-void cdFunc(char* args[], int maxargs);
-void lsFunc(char* args[], int maxargs);
+void pwdFunc(char* args[], int nargs);
+void cdFunc(char* args[], int nargs);
+void lsFunc(char* args[], int nargs);
 
 // list commands and functions
 // must be terminated by {NULL, NULL} 
@@ -309,7 +309,7 @@ void exitFunc(char * args[], int nargs){
 //
 // Returns	nothing (void)
 //-
-void pwdFunc(char* args[], int maxargs){
+void pwdFunc(char* args[], int nargs){
     char * cwd = getcwd(NULL,0);
     printf("Current directory: %s\n", cwd);
     free(cwd);
@@ -327,8 +327,20 @@ void pwdFunc(char* args[], int maxargs){
 //
 // Returns	nothing (void)
 //-
-void cdFunc(char* args[], int maxargs){
-exit(0);
+void cdFunc(char* args[], int nargs){
+    // Get password
+    struct passwd *pw = getpwuid(getuid());
+    if(pw==NULL) {
+        fprintf(stderr, "NULL password\n");
+        return;
+    }
+    char* newDir = NULL;
+    // if no args after cd then go to home dir
+    if(nargs==1) newDir = pw->pw_dir;
+    // if there is an arg after cd then try to change to that directory
+    else newDir = args[1];
+    // try to change directories print an error if it cannot
+    if(chdir(newDir)==-1) fprintf(stderr, "Unable to change directory.\n");
 }
 
 //+ TODO: Write func desc
@@ -342,6 +354,6 @@ exit(0);
 //
 // Returns	nothing (void)
 //-
-void lsFunc(char* args[], int maxargs){
+void lsFunc(char* args[], int nargs){
 exit(0);
 }

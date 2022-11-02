@@ -10,4 +10,6 @@ right function to run from the commands struct and runs it.
 
 doInternalCommand() can call:
 exitFunc which exits the program
-pwdFunc which prints the current working directory
+pwdFunc which prints the current working directory using cwd
+cdFunc which changes the current working directory to the second
+arugment given after the command. 
