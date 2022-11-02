@@ -3,3 +3,7 @@ commandBuffer array and gets rid of the leading spaces.
 
 the splitCommandLine() function parses the arguments from the commandBuffer
 with the help of the skipChar() function.
+
+Once the desired command and arguments are parsed, the function 
+doInternalCommand() is run which takes the args and finds the 
+right function to run from the commands struct.
