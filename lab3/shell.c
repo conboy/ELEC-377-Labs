@@ -92,16 +92,15 @@ int main() {
 	// element just past nargs
 	//printf("%d: %x\n",i, args[i]);
 
-    // check if 1 or more args (Step 3)
+    // check if 1 or more args then run command handler
     if (nargs > 0) {
-        doInternalCommand(args, nargs);
+        // if command doesnt exist call doProgram
+        if (doInternalCommand(args, nargs) == 0) {
+            if(doProgram(args, nargs) == 0) {
+                fprintf(stderr, "Command not found\n");
+            }
+        }
     }
-        // TODO: if one or more args, call doInternalCommand  (Step 3)
-        
-        // TODO: if doInternalCommand returns 0, call doProgram  (Step 4)
-        
-        // TODO: if doProgram returns 0, print error message (Step 3 & 4)
-        // that the command was not found.
 
 	// print prompt
 	printf("%%> ");
@@ -208,6 +207,7 @@ char * path[] = {
 
 int doProgram(char * args[], int nargs){
   // find the executable
+  
   // TODO: add body.
   // Note this is step 4, complete doInternalCommand first!!!
 
@@ -258,7 +258,6 @@ struct cmdStruct commands[] = {
 //-
 
 int doInternalCommand(char * args[], int nargs){
-    // TODO: function contents (step 3)
     int i = 0;
     
     
@@ -272,6 +271,7 @@ int doInternalCommand(char * args[], int nargs){
         }
         i++;
     }
+    fprintf(stderr, "Unable to find command\n");
     return 0;
 }
 
@@ -354,6 +354,39 @@ void cdFunc(char* args[], int nargs){
 //
 // Returns	nothing (void)
 //-
+int filter(const struct dirent *d){
+    if(d->d_name[0]=='.')
+        return 0;
+    return 1;
+}
+
+//+ TODO: Write func desc
+// Function: exitFunc
+//
+// Purpose:	This function exits the program
+//
+// Parameters:
+//	args	command and parameters, an array of pointers to strings
+//	nargs	number of entries in the args array
+//
+// Returns	nothing (void)
+//-
 void lsFunc(char* args[], int nargs){
-exit(0);
+    struct dirent **namelist;
+    int (*filterOption)(const struct dirent *d) = NULL;
+    if(nargs==1)
+        filterOption = filter;
+    else if(strcmp(args[1], "-a") == 0){
+        filterOption = NULL;
+    }
+    else{
+        fprintf(stderr, "Invalid filter option.\n");
+        return;
+    }
+
+    int numEnts = scandir(".", &namelist, filterOption, NULL);
+    int i;
+    for(i = 0; i < numEnts; i++){
+        printf("%s\n", namelist[i]->d_name);
+    }
 }
