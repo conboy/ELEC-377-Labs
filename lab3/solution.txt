@@ -16,3 +16,8 @@ arugment given after the command.
 lsFunc prints the files in the cwd excluding the hidden ones but
 passing -a as an argument will print all files including hidden
 ones
+
+if the first arg does not match any of the functions listed in
+doInternalCommand() it will run doProgram() which will search
+the . and /usr/bin/ directories for programs that match the 
+first arg's name. 
