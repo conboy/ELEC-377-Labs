@@ -6,4 +6,8 @@ with the help of the skipChar() function.
 
 Once the desired command and arguments are parsed, the function 
 doInternalCommand() is run which takes the args and finds the 
-right function to run from the commands struct.
+right function to run from the commands struct and runs it.
+
+doInternalCommand() can call:
+exitFunc which exits the program
+pwdFunc which prints the current working directory

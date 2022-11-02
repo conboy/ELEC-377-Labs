@@ -228,6 +228,9 @@ struct cmdStruct{
 // prototypes for command handling functions
 // TODO: add prototype for each comamand function
 void exitFunc (char *args[], int nargs);
+void pwdFunc(char* args[], int maxargs);
+void cdFunc(char* args[], int maxargs);
+void lsFunc(char* args[], int maxargs);
 
 // list commands and functions
 // must be terminated by {NULL, NULL} 
@@ -235,6 +238,9 @@ void exitFunc (char *args[], int nargs);
 struct cmdStruct commands[] = {
    // TODO: add entry for each command
    {"exit", exitFunc},
+   {"pwd",  pwdFunc},
+   {"cd", cdFunc},
+   {"ls", lsFunc},
    { NULL, NULL}		// terminator
 };
 
@@ -257,7 +263,6 @@ int doInternalCommand(char * args[], int nargs){
     
     
     while (commands[i].cmdName != NULL) {
-        printf("this is: %s\n", commands[i].cmdName);
         if (strcmp(args[0], commands[i].cmdName) == 0) {
             commands[i].cmdFunc(args, nargs);
 		   return 1;
@@ -291,4 +296,52 @@ int doInternalCommand(char * args[], int nargs){
 //-
 void exitFunc(char * args[], int nargs){
 	exit(0);
+}
+
+//+
+// Function: pwdFunc
+//
+// Purpose:	This function prints the current working directory
+//
+// Parameters:
+//	args	command and parameters, an array of pointers to strings
+//	nargs	number of entries in the args array
+//
+// Returns	nothing (void)
+//-
+void pwdFunc(char* args[], int maxargs){
+    char * cwd = getcwd(NULL,0);
+    printf("Current directory: %s\n", cwd);
+    free(cwd);
+}
+
+
+//+ TODO: Write func desc
+// Function: exitFunc
+//
+// Purpose:	This function exits the program
+//
+// Parameters:
+//	args	command and parameters, an array of pointers to strings
+//	nargs	number of entries in the args array
+//
+// Returns	nothing (void)
+//-
+void cdFunc(char* args[], int maxargs){
+exit(0);
+}
+
+//+ TODO: Write func desc
+// Function: exitFunc
+//
+// Purpose:	This function exits the program
+//
+// Parameters:
+//	args	command and parameters, an array of pointers to strings
+//	nargs	number of entries in the args array
+//
+// Returns	nothing (void)
+//-
+void lsFunc(char* args[], int maxargs){
+exit(0);
 }
