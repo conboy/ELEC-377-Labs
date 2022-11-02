@@ -52,17 +52,10 @@ int main() {
     // Testing for skipChar
     //char name[22] = {' ', ' ', 't', 'h', 'i', 's', ' ', 'i', 's', ' ', ' ', 'a', ' ', 's', 'e', 'n', 't', 'e', 'n', 'c', 'e', '\0'}; 
 
-    
-    
-    
-    
-
-
     char commandBuffer[CMD_BUFFSIZE];
     // note the plus one, allows for an extra null
     char *args[MAXARGS+1];
 
-    // Testing for splitCommandLine
 
 
     // print prompt.. fflush is needed because
@@ -87,20 +80,22 @@ int main() {
 	// TODO
 
 	// add a null to end of array (Step 2)
-
+    args[nargs] = '\0';
 	// TODO
 
 	// debugging
 	printf("%d\n", nargs);
 	int i;
 	for (i = 0; i < nargs; i++){
-	  printf("%d: %s\n",i,args[i]);
+	  printf("%d: '%s'\n",i,args[i]);
 	}
 	// element just past nargs
 	//printf("%d: %x\n",i, args[i]);
 
-        // TODO: check if 1 or more args (Step 3)
-        
+    // check if 1 or more args (Step 3)
+    if (nargs > 0) {
+        doInternalCommand(args, nargs);
+    }
         // TODO: if one or more args, call doInternalCommand  (Step 3)
         
         // TODO: if doInternalCommand returns 0, call doProgram  (Step 4)
@@ -159,10 +154,13 @@ int splitCommandLine(char * commandBuffer, char* args[], int maxargs){
    // Get pointer to first letter of first word in commandBuffer
    charPtr = skipChar(commandBuffer, ' ');
    // Add pointer to args array
-   args[numWords] = charPtr;
+   if (*charPtr != '\0') {
+    args[numWords] = charPtr;
 
-   // Increment number of words
-   numWords++;
+    // Increment number of words
+    numWords++;
+   } 
+   
    
 
    while (1) {
@@ -229,12 +227,14 @@ struct cmdStruct{
 
 // prototypes for command handling functions
 // TODO: add prototype for each comamand function
+void exitFunc (char *args[], int nargs);
 
 // list commands and functions
 // must be terminated by {NULL, NULL} 
 // in a real shell, this would be a hashtable.
 struct cmdStruct commands[] = {
    // TODO: add entry for each command
+   {"exit", exitFunc},
    { NULL, NULL}		// terminator
 };
 
@@ -253,6 +253,20 @@ struct cmdStruct commands[] = {
 
 int doInternalCommand(char * args[], int nargs){
     // TODO: function contents (step 3)
+    int i = 0;
+    
+    
+    while (commands[i].cmdName != NULL) {
+        printf("this is: %s\n", commands[i].cmdName);
+        if (strcmp(args[0], commands[i].cmdName) == 0) {
+            commands[i].cmdFunc(args, nargs);
+		   return 1;
+        }
+        else{
+            
+        }
+        i++;
+    }
     return 0;
 }
 
@@ -264,3 +278,17 @@ int doInternalCommand(char * args[], int nargs){
 // goes here. Also make sure a comment block prefaces
 // each of the command handling functions.
 
+//+
+// Function: exitFunc
+//
+// Purpose:	This function exits the program
+//
+// Parameters:
+//	args	command and parameters, an array of pointers to strings
+//	nargs	number of entries in the args array
+//
+// Returns	nothing (void)
+//-
+void exitFunc(char * args[], int nargs){
+	exit(0);
+}
