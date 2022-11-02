@@ -1,0 +1,38 @@
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ ./shell
+%> ls
+1
+0: 'ls'
+textexit.txt
+test
+shell
+shell.c
+testls.txt
+testSplitCommand.txt
+Makefile
+testcd.txt
+testpwd.txt
+solution.txt
+hello
+hello.c
+%> ls -a
+2
+0: 'ls'
+1: '-a'
+textexit.txt
+test
+.
+shell
+shell.c
+..
+testls.txt
+testSplitCommand.txt
+Makefile
+testcd.txt
+testpwd.txt
+solution.txt
+hello
+hello.c
+%> exit
+1
+0: 'exit'
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ 

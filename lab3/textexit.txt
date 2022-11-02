@@ -1,0 +1,5 @@
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ ./shell
+%> exit
+1
+0: 'exit'
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ 

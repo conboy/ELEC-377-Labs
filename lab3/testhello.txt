@@ -1,0 +1,9 @@
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ ./shell
+%> hello
+1
+0: 'hello'
+Unable to find command
+./hello
+0
+Hello 19cjf6
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ Hello 19cjf6

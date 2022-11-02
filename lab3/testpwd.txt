@@ -1,0 +1,16 @@
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ ./shell
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6/elec377-Tues-31/elec377-Tues-31/lab3
+%> cd
+1
+0: 'cd'
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6
+%> exit
+1
+0: 'exit'
+19cjf6@elec377-Tues-31:~/elec377-Tues-31/elec377-Tues-31/lab3$ 

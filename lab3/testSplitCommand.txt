@@ -1,0 +1,127 @@
+Script started on 2022-11-02 08:37:33-04:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="117" LINES="13"]
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> hell    hello
+1
+0: 'hello'
+Unable to find command
+./hello
+0
+Hello 19cjf6
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ Hello 19cjf6
+e[K
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> ^C
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ [K]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ [K]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> eixt   xit
+1
+0: 'exit'
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6/elec377-Tues-31/elec377-Tues-31/lab3
+%> cd
+1
+0: 'cd'
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6
+%> exit
+1
+0: 'exit'
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6/elec377-Tues-31/elec377-Tues-31/lab3
+%> cd
+1
+0: 'cd'
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6
+%> cd /home/19cjf7 6/elec377-Tues-31
+2
+0: 'cd'
+1: '/home/19cjf6/elec377-Tues-31'
+%> pwd
+1
+0: 'pwd'
+Current directory: /home/19cjf6/elec377-Tues-31
+%> exit
+1
+0: 'exit'
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> ls
+1
+0: 'ls'
+textexit.txt
+test
+shell
+shell.c
+testls.txt
+testSplitCommand.txt
+Makefile
+testcd.txt
+testpwd.txt
+solution.txt
+hello
+hello.c
+%> ls -a
+2
+0: 'ls'
+1: '-a'
+textexit.txt
+test
+.
+shell
+shell.c
+..
+testls.txt
+testSplitCommand.txt
+Makefile
+testcd.txt
+testpwd.txt
+solution.txt
+hello
+hello.c
+%> exit
+1
+0: 'exit'
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> hello
+1
+0: 'hello'
+Unable to find command
+./hello
+0
+Hello 19cjf6
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ Hello 19cjf6
+exot[K[K[K[K^C
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> echo "hello"
+2
+0: 'echo'
+1: '"hello"'
+Unable to find command
+./echo
+-1
+/usr/bin/echo
+0
+"hello"
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ "hello"
+[K]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ [K]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ^C
+]0;19cjf6@elec377-Tues-31: ~/elec377-Tues-31/elec377-Tues-31/lab3[01;32m19cjf6@elec377-Tues-31[00m:[01;34m~/elec377-Tues-31/elec377-Tues-31/lab3[00m$ ./shell
+%> echo hello
+2
+0: 'echo'
+1: 'hello'
+Unable to find command
+./echo
+-1
+/usr/bin/echo
+0
+hello
+]0;19cjf6@elec377-Tu

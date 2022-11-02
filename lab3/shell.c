@@ -207,10 +207,33 @@ char * path[] = {
 
 int doProgram(char * args[], int nargs){
   // find the executable
-  
-  // TODO: add body.
-  // Note this is step 4, complete doInternalCommand first!!!
+  int i = 0;
+  char* cmd_path;
+  while (path[i] != NULL) {
+      int pathstrlen = strlen(path[i]);
+      int cmdstrlen = strlen(args[0]);
+      int numChars = pathstrlen + cmdstrlen + 2;
+      cmd_path = malloc(pathstrlen + cmdstrlen + 2);
+      sprintf(cmd_path, "%s/%s\0", path[i], args[0]);
+      printf("%s\n", cmd_path);
 
+      struct stat buf;
+      printf("%d\n", stat(cmd_path, &buf));
+      if (S_ISREG(buf.st_mode) && S_IXUSR != 0) break;
+      i++;
+  }
+  if (cmd_path == NULL) return 0;
+
+  
+  if (fork() == 0){
+    execv(cmd_path, args);
+  }
+  else {
+    execv(cmd_path, args);
+    free(cmd_path);
+    wait(NULL);
+  }
+  
   return 1;
 }
 
