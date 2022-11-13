@@ -1,0 +1,29 @@
+logsplit is a bash script that sorts the logs given in the argument into seperate files and
+appends the time span of the printer and reader threads into their respective files.
+
+First, the script checks if one argument is passed through the script if it is not one, the 
+script exits with exit code 1. The script also checks if the file exists and is readable
+using the test -r command if it gives exit code 1 then the script exits with code 1.
+
+Then the script extracts only the reader messages using grep by searching for lines that
+begin with "\[[0-9];[0-9][0-9]mR" and ouputs the reader messages to a new file called
+"f.Reader" where f is the name of the file passed through the script. The script then looks
+through the f.Reader file to look for the start time by using head to get the first line in 
+the reader file and extracts the unix time without the decimal using cut and sed. It also
+gets the end time by using tail to get the last line of the reader and cut and sed in the
+same manner. Finally, it appends the time span to the reader file after doing arithmetic
+using printf to format it.
+
+The script does the same thing it did with the reader messages but to the printer messages
+this time sending all of the output to the "f.Printer" file where f is the name of the file
+passed through the script.
+
+The script finds the number of machines by using grep in the same way it did in the printer
+and reader steps except it uses [0-5] instead of P or R to take only the lines that have a
+number from 0 to 5 as the program only supports up to 6 machines. The script extracts the 
+machine number in the line using the cut command and gets rid of uniques and sorts the machines
+using sort -u.
+
+Finally, the script extracts each machines messages and outputs them to their respective
+file with the convention "f.Machine#" where f is the filename passed through the script
+and # is the machine number.
