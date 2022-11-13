@@ -2,3 +2,7 @@ The provided test files were used to test the script. All of the machine message
 respective files as well as the machine and printer messages. The time spans are correct as
 well because I subtracted the end time - start time on a calculator and it matched what was 
 outputted to the files.
+
+I have also tested the logscript against the 4mach.out in the lab2sol folder and the same
+got the same correct results. The machine messages in their espective files as well as the 
+machine and printer messages. The time spans were calculated to be correct using a calculator.
