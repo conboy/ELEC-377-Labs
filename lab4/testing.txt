@@ -1,0 +1,4 @@
+The provided test files were used to test the script. All of the machine messages are in their
+respective files as well as the machine and printer messages. The time spans are correct as
+well because I subtracted the end time - start time on a calculator and it matched what was 
+outputted to the files.

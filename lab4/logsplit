@@ -21,18 +21,18 @@ echo "Extracting Reader Messages"
 grep "\[[0-9];[0-9][0-9]mR" $1 > $1.Reader
 
 # add time range to end of file. (Step 3)
-startTime=`head -n 1 lab2_3mons.out.Reader | cut -b 11-27 | sed 's/\.//'`
-endTime=`tail -n 1 lab2_3mons.out.Reader | cut -b 11-27 | sed 's/\.//'`
-printf "Time Span: %.2f\n" "$(($endTime-$startTime))e-6" >> lab2_3mons.out.Reader
+startTime=`head -n 1 $1.Reader | cut -b 11-27 | sed 's/\.//'`
+endTime=`tail -n 1 $1.Reader | cut -b 11-27 | sed 's/\.//'`
+printf "Time Span: %.2f\n" "$(($endTime-$startTime))e-6" >> $1.Reader
 
 # extract all of the Printer Messages (P)  (Step 1)
 echo "Extracting Summary Printer Messages"
 grep "^\[[0-9];[0-9][0-9]mP" $1 > $1.Printer
 
 # add time range to end of file. (Step 3)
-startTime=`head -n 1 lab2_3mons.out.Printer | cut -b 11-27 | sed 's/\.//'`
-endTime=`tail -n 1 lab2_3mons.out.Printer | cut -b 11-27 | sed 's/\.//'`
-printf "Time Span: %.2f\n" "$(($endTime-$startTime))e-6" >> lab2_3mons.out.Printer
+startTime=`head -n 1 $1.Printer | cut -b 11-27 | sed 's/\.//'`
+endTime=`tail -n 1 $1.Printer | cut -b 11-27 | sed 's/\.//'`
+printf "Time Span: %.2f\n" "$(($endTime-$startTime))e-6" >> $1.Printer
 
 #find the number of machines (Step 2)
 machineList=`grep "^\[[0-9];[0-9][0-9]m[0-5]" $1 | cut -b '8' | sort -u`
