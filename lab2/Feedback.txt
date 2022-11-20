@@ -1,0 +1,11 @@
+Documentation 2.5/3
+-please include the problem statement next time
+-otherwise good documentation
+
+Correctness 2.5/3
+-does not check if semaphore wait/post operation fails or not
+
+Style 2/2
+
+
+Testing 2/2
