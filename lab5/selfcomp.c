@@ -27,10 +27,10 @@ char * compromise1 =
     "xxxxxxxxxxxxxxxxxxxx"
     "MNOPWXYZ"
     "xxxxxxxx";
-
+int i;
 void doTest(){
     char buffer[136];
-    int i;
+
     /* copy the contents of the compromise
        string onto the stack
        - change compromise1 to compromise
