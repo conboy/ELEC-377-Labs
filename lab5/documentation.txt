@@ -2,36 +2,31 @@ Code Documentation
 
 File Name: selfcomp.c
 
-Objectives:	This file attacks itself with the global buffer overflow attack to develop the exploit for use on a server.
+Objectives: This file attacks itself with the global buffer overflow attack to develop the exploit for use on a server.
 
-Code Description: 
+Code Description: x characters were added repeatedly in the compromise1 string to cause a buffer overflow. gdb was then used to find the stack
+pointer. Then an array called compromise was made using the hexadecimal machine code created from the exploit.nasm file. 5 NOP bytes were added 
+to fill up the array and catch the process returning to the injected program.
 							
 							
 File Name: exploit.nasm/exploit.lst
 
-Objectives:			Contains the x86 code to exploit the global buffer, both locally, and on the server
+Objectives:	x86 code used to exploit the global buffer and call the command sh -c "printenv;exit"
 
-Code Description: 				The code contained within exploit.nasm is used to call the command: sh -c "cat /etc/passwd; exit". This is done by overloading an array within the
-								server, and making a function pointer call to the code slipped to the server in the exploit2 char array. The main difficulty in accomplishing this
-								is not including any NULL or newline characters within the code, along with not using absolute addressing. The start of the data segment is found by jumping to
-								the end of the code, then calling back up to the start to have the data segment address on the top of the stack. Then, modifications are made to the data segment to include
-								all the required null bytes after the code has been passed to the server. The next segment of code moves the completed strings into the argv array so that the command can be executed
-								by the server. This is once again done by relative addressing, and allows the command to be executed once the call is made. The next part of the code consists of setting up all the
-								key registers required in calling sh -c "cat /etc/passwd; exit", along with making the system call to execute the command.
-								
-								
+Code Description: The start of the data segment is found by jumping to the end of the code then going back to the start to pop the data segment
+address recorded on the stack. Then the code was modified so that some lines of code have null bytes in them so they can go through the server.
+The code then moves the data into the argv array so that the computer can be tricked into executing them. This is done with relative addressing
+so that the program can be run on runtime. Finally, the key registers are set up to execute the command as well as the system call to execute the
+commands in argv. 
+		
+        						
 File Name: client.c
 
-Objectives:			A client file used to access the server, and pass the global buffer overflow attack to obtain the information within the etc/passwd director
+Objectives:	Connect to the server and cause a buffer overflow with the exploit that reveals the environment variables.
 
-Code Description: 			The composition of client.c is similar to selfcomp.c, with more specialization to exploit the server specifically. Unlike selfcomp.c, the server's buffer size to cause an overflow
-							is 134 bytes. The exploit is contained within the compromise1 char array, with the same code as contained within selfcomp.c, with a different buffer address and a different amount
-							of padding at the front of the code. Much akin to selfcomp.c, no NULL or newline characters are contained within the body of the code.
-							
-							
-The Attack:					The attack requires the overwriting of a buffer contained within memory with the exploit code. The code is then executed by using a function pointer call that enters into the buffer
-							address, and it executes the code contained within the overwritten buffer. The code we are trying to execute is a cat command that returns to us the /etc/passwd file. This is done 
-							on the assembly level, by loading the command into the argv array to execute the command.
+Code Description: The same principle from selfcomp.c was used in this application. There were 69 NOPs and 208 x's before the MNOPWXYZ. After
+connecting to the server with the client the server spills the environment variables where the md5 hash was found.
+c13d47bfb60f61fb5f0c9e4aaca3d244
 
 CRACKING THE PASSWORD
 
