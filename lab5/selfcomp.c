@@ -16,7 +16,8 @@ int main(int argc, char * argv[]){
 }
 
 // VAriable to contain hex bytes of shell code
-char compromise[120] = {
+char compromise[159] = {
+    
     0x00,
 };
 
