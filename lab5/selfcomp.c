@@ -25,6 +25,12 @@ char compromise[120] = {
 char * compromise1 =
     "xxxxxxxxxxxxxxxxxxxx"
     "xxxxxxxxxxxxxxxxxxxx"
+    "xxxxxxxxxxxxxxxxxxxx"
+    "xxxxxxxxxxxxxxxxxxxx"
+    "xxxxxxxxxxxxxxxxxxxx"
+    "xxxxxxxxxxxxxxxxxxxx"
+    "xxxxxxxxxxxxxxxxxxxx"
+    "xxxx"
     "MNOPWXYZ"
     "xxxxxxxx";
 int i;
